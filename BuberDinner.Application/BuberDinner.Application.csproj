@@ -11,9 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentResults" Version="4.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.8" />
-    <PackageReference Include="OneOf" Version="3.0.271" />
   </ItemGroup>
 
 </Project>

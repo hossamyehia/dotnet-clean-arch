@@ -132,17 +132,9 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
-            "FluentResults": {
-              "target": "Package",
-              "version": "[4.0.0, )"
-            },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
               "version": "[9.0.8, )"
-            },
-            "OneOf": {
-              "target": "Package",
-              "version": "[3.0.271, )"
             }
           },
           "imports": [

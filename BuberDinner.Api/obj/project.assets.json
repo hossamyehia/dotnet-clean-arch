@@ -15,23 +15,6 @@
           }
         }
       },
-      "FluentResults/4.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Logging.Abstractions": "2.1.1",
-          "System.Threading.Tasks.Extensions": "4.5.4"
-        },
-        "compile": {
-          "lib/net9.0/FluentResults.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net9.0/FluentResults.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.Extensions.Configuration/9.0.8": {
         "type": "package",
         "dependencies": {
@@ -246,15 +229,6 @@
           }
         }
       },
-      "OneOf/3.0.271": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/OneOf.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/OneOf.dll": {}
-        }
-      },
       "System.IdentityModel.Tokens.Jwt/8.14.0": {
         "type": "package",
         "dependencies": {
@@ -272,23 +246,12 @@
           }
         }
       },
-      "System.Threading.Tasks.Extensions/4.5.4": {
-        "type": "package",
-        "compile": {
-          "ref/netcoreapp2.1/_._": {}
-        },
-        "runtime": {
-          "lib/netcoreapp2.1/_._": {}
-        }
-      },
       "BuberDinner.Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
           "BuberDinner.Domain": "1.0.0",
-          "FluentResults": "4.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.8",
-          "OneOf": "3.0.271"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.8"
         },
         "compile": {
           "bin/placeholder/BuberDinner.Application.dll": {}
@@ -355,27 +318,6 @@
         "lib/net6.0/ErrorOr.xml",
         "lib/netstandard2.0/ErrorOr.dll",
         "lib/netstandard2.0/ErrorOr.xml"
-      ]
-    },
-    "FluentResults/4.0.0": {
-      "sha512": "wKfdLvDnDVhXlSreU7u/NFNHH6EfoOhAloEID4ePAyk+ZliowKZJvX+aCL4hxhFc9Jj74t62amS4LyOYTjXGCg==",
-      "type": "package",
-      "path": "fluentresults/4.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "FluentResults-Icon-128.png",
-        "README.md",
-        "fluentresults.4.0.0.nupkg.sha512",
-        "fluentresults.nuspec",
-        "lib/net8.0/FluentResults.dll",
-        "lib/net8.0/FluentResults.xml",
-        "lib/net9.0/FluentResults.dll",
-        "lib/net9.0/FluentResults.xml",
-        "lib/netstandard2.0/FluentResults.dll",
-        "lib/netstandard2.0/FluentResults.xml",
-        "lib/netstandard2.1/FluentResults.dll",
-        "lib/netstandard2.1/FluentResults.xml"
       ]
     },
     "Microsoft.Extensions.Configuration/9.0.8": {
@@ -773,21 +715,6 @@
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
-    "OneOf/3.0.271": {
-      "sha512": "pqpqeK8xQGggExhr4tesVgJkjdn+9HQAO0QgrYV2hFjE3y90okzk1kQMntMiUOGfV7FrCUfKPaVvPBD4IANqKg==",
-      "type": "package",
-      "path": "oneof/3.0.271",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net35/OneOf.dll",
-        "lib/net45/OneOf.dll",
-        "lib/netstandard1.3/OneOf.dll",
-        "lib/netstandard2.0/OneOf.dll",
-        "oneof.3.0.271.nupkg.sha512",
-        "oneof.nuspec"
-      ]
-    },
     "System.IdentityModel.Tokens.Jwt/8.14.0": {
       "sha512": "EYGgN/S+HK7S6F3GaaPLFAfK0UzMrkXFyWCvXpQWFYmZln3dqtbyIO7VuTM/iIIPMzkelg8ZLlBPvMhxj6nOAA==",
       "type": "package",
@@ -810,43 +737,6 @@
         "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.xml",
         "system.identitymodel.tokens.jwt.8.14.0.nupkg.sha512",
         "system.identitymodel.tokens.jwt.nuspec"
-      ]
-    },
-    "System.Threading.Tasks.Extensions/4.5.4": {
-      "sha512": "zteT+G8xuGu6mS+mzDzYXbzS7rd3K6Fjb9RiZlYlJPam2/hU7JCBZBVEcywNuR+oZ1ncTvc/cq0faRr3P01OVg==",
-      "type": "package",
-      "path": "system.threading.tasks.extensions/4.5.4",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net461/System.Threading.Tasks.Extensions.dll",
-        "lib/net461/System.Threading.Tasks.Extensions.xml",
-        "lib/netcoreapp2.1/_._",
-        "lib/netstandard1.0/System.Threading.Tasks.Extensions.dll",
-        "lib/netstandard1.0/System.Threading.Tasks.Extensions.xml",
-        "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll",
-        "lib/netstandard2.0/System.Threading.Tasks.Extensions.xml",
-        "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll",
-        "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.xml",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/netcoreapp2.1/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-        "system.threading.tasks.extensions.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
       ]
     },
     "BuberDinner.Application/1.0.0": {

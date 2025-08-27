@@ -1,10 +1,8 @@
-using BuberDinner.Application.Common.Errors.FluentResult_ApproachErrorHandling;
 using BuberDinner.Application.Common.Interfaces.Authentication;
 using BuberDinner.Application.Common.Interfaces.Persistence;
 using BuberDinner.Domain.Common.Errors;
 using BuberDinner.Domain.Entities;
 using ErrorOr;
-using FluentResults;
 // using OneOf;
 
 namespace BuberDinner.Application.Services.Authentication;

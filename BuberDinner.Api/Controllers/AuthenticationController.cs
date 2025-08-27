@@ -1,11 +1,7 @@
 using BuberDinner.Api.Authentication;
 using BuberDinner.Application.Services.Authentication;
 using Microsoft.AspNetCore.Mvc;
-using BuberDinner.Application.Common.Errors.FluentResult_ApproachErrorHandling;
-using FluentResults;
 using ErrorOr;
-// using BuberDinner.Application.Common.Errors;
-// using OneOf;
 
 namespace BuberDinner.Api.Controllers;
 
@@ -33,33 +29,6 @@ public class AuthenticationController : ApiController
             result => Ok(MapAuthResult(result)),
             errors => Problem(errors)
         );
-
-        // FluentResult approach
-        // Result<AuthenticationResult> registerResult = _authenticationService.Register(
-        //     request.FirstName,
-        //     request.LastName,
-        //     request.Email,
-        //     request.Password
-        // );
-
-        // if (registerResult.IsFailed)
-        // {
-        //     var firstError = registerResult.Errors[0];
-        //     var (statusCode, message) = firstError switch
-        //     {
-        //         DuplicateEmailError => (409, "Email already exists"),
-        //         // AnotherCustomError => (400, firstError.Message),
-        //         _ => (500, "An unexpected error occurred")
-        //     };
-        //     return Problem(statusCode: statusCode, title: message);
-        // }
-        // return Ok(MapAuthResult(registerResult.Value));
-        // OneOf approach
-        // OneOf<AuthenticationResult, IError_OneOf> registerResult = _authenticationService.Register();
-        // return registerResult.Match(
-        //     result => Ok(MapAuthResult(result)),
-        //     error => Problem(statusCode: (int)error.StatusCode, title: error.ErrorMessage)
-        // );
     }
 
 
