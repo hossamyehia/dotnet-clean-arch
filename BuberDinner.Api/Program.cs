@@ -1,18 +1,14 @@
 using BuberDinner.Application;
 using BuberDinner.Infrastructure;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using BuberDinner.Api.Common.Errors;
+using BuberDinner.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 {
     // Add services to the container.
     builder.Services
+            .AddPresentation()
             .AddApplication()
             .AddInfrastructure(builder.Configuration);
-
-    // it overrides the default ProblemDetailsFactory with our custom implementation
-    builder.Services.AddSingleton<ProblemDetailsFactory, BuberDinnerProblemDetailsFactory>();
-    builder.Services.AddControllers();
 }
 
 var app = builder.Build();
