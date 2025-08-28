@@ -54,3 +54,10 @@ E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinne
 E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\MediatR.dll
 E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\MediatR.Contracts.dll
 E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
+E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\FluentValidation.dll
+E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\FluentValidation.AspNetCore.dll
+E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\FluentValidation.DependencyInjectionExtensions.dll
+E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\Mapster.dll
+E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\Mapster.Core.dll
+E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\Mapster.DependencyInjection.dll
+E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\obj\Debug\net9.0\BuberDinner.Api.MvcApplicationPartsAssemblyInfo.cs

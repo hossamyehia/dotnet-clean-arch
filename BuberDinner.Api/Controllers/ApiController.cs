@@ -11,27 +11,44 @@ namespace BuberDinner.Api.Controllers;
 public class ApiController : ControllerBase
 {
     protected IActionResult Problem(List<Error> errors)
-    {   
-        HttpContext.Items[HttpContextItemKeys.Errors] = errors;
-        if (errors.All(error => error.Type == ErrorType.Validation))
+    {
+        if (errors.Count == 0)
         {
-            var modelStateDictionary = new ModelStateDictionary();
-            foreach (var error in errors)
-            {
-                modelStateDictionary.AddModelError(error.Code, error.Description);
-            }
-            return ValidationProblem(modelStateDictionary);
+            return Problem();
         }
 
-        var firstError = errors[0];
-        return Problem(statusCode: firstError.Type switch
+        HttpContext.Items[HttpContextItemKeys.Errors] = errors;
+
+        if (errors.All(error => error.Type == ErrorType.Validation))
         {
-            ErrorType.NotFound => StatusCodes.Status404NotFound,
-            ErrorType.Conflict => StatusCodes.Status409Conflict,
-            ErrorType.Validation => StatusCodes.Status400BadRequest,
-            ErrorType.Unauthorized => StatusCodes.Status401Unauthorized,
-            _ => StatusCodes.Status500InternalServerError
-        },
-        title: firstError.Description);
+            return ValidationProblem(errors);
+        }
+        
+        return Problem(errors[0]);
+    }
+
+    private ObjectResult Problem(Error error)
+    {
+        return Problem(
+            statusCode: error.Type switch
+                {
+                    ErrorType.NotFound => StatusCodes.Status404NotFound,
+                    ErrorType.Conflict => StatusCodes.Status409Conflict,
+                    ErrorType.Validation => StatusCodes.Status400BadRequest,
+                    ErrorType.Unauthorized => StatusCodes.Status401Unauthorized,
+                    _ => StatusCodes.Status500InternalServerError
+                },
+            title: error.Description
+        );
+    }
+
+    private IActionResult ValidationProblem(List<Error> errors)
+    {
+        var modelStateDictionary = new ModelStateDictionary();
+        foreach (var error in errors)
+        {
+            modelStateDictionary.AddModelError(error.Code, error.Description);
+        }
+        return ValidationProblem(modelStateDictionary);
     }
 }
