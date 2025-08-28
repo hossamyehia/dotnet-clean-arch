@@ -9,3 +9,4 @@ E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinne
 E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Contracts\obj\Debug\net9.0\refint\BuberDinner.Contracts.dll
 E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Contracts\obj\Debug\net9.0\BuberDinner.Contracts.pdb
 E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Contracts\obj\Debug\net9.0\ref\BuberDinner.Contracts.dll
+E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Contracts\obj\Debug\net9.0\BuberDinner.Contracts.sourcelink.json

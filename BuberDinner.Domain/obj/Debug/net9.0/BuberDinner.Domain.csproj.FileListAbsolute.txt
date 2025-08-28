@@ -10,3 +10,4 @@ E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinne
 E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Domain\obj\Debug\net9.0\BuberDinner.Domain.pdb
 E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Domain\obj\Debug\net9.0\ref\BuberDinner.Domain.dll
 E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Domain\obj\Debug\net9.0\BuberDinner.Domain.csproj.AssemblyReference.cache
+E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Domain\obj\Debug\net9.0\BuberDinner.Domain.sourcelink.json

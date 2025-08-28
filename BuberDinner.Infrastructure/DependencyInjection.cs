@@ -18,7 +18,7 @@ public static class DependencyInjection
         services.Configure<JwtSettings>(configuration.GetSection(nameof(JwtSettings)));
         services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
         services.AddScoped<IDateTimeProvider, DateTimeProvider>();
-
+        services.AddScoped<IPasswordHasher, PasswordHasher>();
         services.AddScoped<IUserRepository, UserRepository>();
         return services;
     }

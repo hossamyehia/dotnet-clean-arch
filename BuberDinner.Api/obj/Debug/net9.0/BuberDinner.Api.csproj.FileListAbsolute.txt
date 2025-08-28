@@ -48,6 +48,6 @@ E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinne
 E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
 E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll
 E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
-E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\OneOf.dll
 E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\ErrorOr.dll
-E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\FluentResults.dll
+E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\obj\Debug\net9.0\BuberDinner.Api.sourcelink.json
+E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\BCrypt.Net-Next.dll
