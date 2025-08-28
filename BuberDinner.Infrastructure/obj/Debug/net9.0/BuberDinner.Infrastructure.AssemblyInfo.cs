@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BuberDinner.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d82059a700428592f27ffb755ce33f694e566541")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af958389798e948080099e202215d44ffda6b7ce")]
 [assembly: System.Reflection.AssemblyProductAttribute("BuberDinner.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BuberDinner.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

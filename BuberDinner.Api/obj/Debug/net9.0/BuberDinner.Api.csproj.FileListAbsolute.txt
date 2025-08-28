@@ -51,3 +51,6 @@ E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinne
 E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\ErrorOr.dll
 E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\obj\Debug\net9.0\BuberDinner.Api.sourcelink.json
 E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\BCrypt.Net-Next.dll
+E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\MediatR.dll
+E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\MediatR.Contracts.dll
+E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\MediatR.Extensions.Microsoft.DependencyInjection.dll

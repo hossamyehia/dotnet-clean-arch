@@ -1,34 +1,34 @@
 using System;
 using BuberDinner.Application.Common.Interfaces.Authentication;
 using BuberDinner.Application.Common.Interfaces.Persistence;
-using BuberDinner.Application.Services.Authentication.Common;
+using BuberDinner.Application.Authentication.Common;
 using BuberDinner.Domain.Common.Errors;
 using ErrorOr;
+using MediatR;
 
-namespace BuberDinner.Application.Services.Authentication.Queries;
+namespace BuberDinner.Application.Authentication.Queries.Login;
 
-public class AuthenticationQueryService : IAuthenticationQueryService
+public class LoginQueryHandler : IRequestHandler<LoginQuery, ErrorOr<AuthenticationResult>>
 {
-    private readonly IJwtTokenGenerator _jwtTokenGenerator;
     private readonly IUserRepository _userRepository;
+    private readonly IJwtTokenGenerator _jwtTokenGenerator;
     private readonly IPasswordHasher _passwordHasher;
-    public AuthenticationQueryService(IJwtTokenGenerator jwtTokenGenerator, IUserRepository userRepository, IPasswordHasher passwordHasher)
+    public LoginQueryHandler(IJwtTokenGenerator jwtTokenGenerator, IUserRepository userRepository, IPasswordHasher passwordHasher)
     {
         _jwtTokenGenerator = jwtTokenGenerator;
         _userRepository = userRepository;
         _passwordHasher = passwordHasher;
     }
 
-    public ErrorOr<AuthenticationResult> Login(string email, string password)
+    public async Task<ErrorOr<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
     {
-
-        var user = _userRepository.GetUserByEmail(email);
-        if (user is null) 
+        var user = _userRepository.GetUserByEmail(query.Email);
+        if (user is null)
         {
             return Errors.Authentication.InvalidCredentials;
         }
         // Verify the password
-        if (!_passwordHasher.VerifyPassword(password, user.Password))
+        if (!_passwordHasher.VerifyPassword(password: query.Password, user.Password))
         {
             return Errors.Authentication.InvalidCredentials;
         }
@@ -41,4 +41,5 @@ public class AuthenticationQueryService : IAuthenticationQueryService
             Token = token
         };
     }
+    
 }
