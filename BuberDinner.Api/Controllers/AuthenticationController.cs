@@ -1,5 +1,5 @@
 using BuberDinner.Api.Authentication;
-using BuberDinner.Application.Services.Authentication;
+using BuberDinner.Application.Services.Authentication.Common;
 using BuberDinner.Application.Services.Authentication.Commands;
 using BuberDinner.Application.Services.Authentication.Queries;
 using Microsoft.AspNetCore.Mvc;
