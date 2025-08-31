@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "iCH0H7N7fmM=",
+  "dgSpecHash": "/O/pE5yanOM=",
   "success": true,
   "projectFilePath": "E:\\99. Others\\Development\\Web Development\\.Net\\New folder\\BuberDinner\\BuberDinner.Api\\BuberDinner.Api.csproj",
   "expectedPackageFiles": [
@@ -15,6 +15,7 @@
     "C:\\Users\\Hossam\\.nuget\\packages\\mediatr\\11.1.0\\mediatr.11.1.0.nupkg.sha512",
     "C:\\Users\\Hossam\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
     "C:\\Users\\Hossam\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\11.1.0\\mediatr.extensions.microsoft.dependencyinjection.11.1.0.nupkg.sha512",
+    "C:\\Users\\Hossam\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\9.0.8\\microsoft.aspnetcore.authentication.jwtbearer.9.0.8.nupkg.sha512",
     "C:\\Users\\Hossam\\.nuget\\packages\\microsoft.extensions.configuration\\9.0.8\\microsoft.extensions.configuration.9.0.8.nupkg.sha512",
     "C:\\Users\\Hossam\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\9.0.8\\microsoft.extensions.configuration.abstractions.9.0.8.nupkg.sha512",
     "C:\\Users\\Hossam\\.nuget\\packages\\microsoft.extensions.configuration.binder\\9.0.8\\microsoft.extensions.configuration.binder.9.0.8.nupkg.sha512",
@@ -26,6 +27,8 @@
     "C:\\Users\\Hossam\\.nuget\\packages\\microsoft.identitymodel.abstractions\\8.14.0\\microsoft.identitymodel.abstractions.8.14.0.nupkg.sha512",
     "C:\\Users\\Hossam\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\8.14.0\\microsoft.identitymodel.jsonwebtokens.8.14.0.nupkg.sha512",
     "C:\\Users\\Hossam\\.nuget\\packages\\microsoft.identitymodel.logging\\8.14.0\\microsoft.identitymodel.logging.8.14.0.nupkg.sha512",
+    "C:\\Users\\Hossam\\.nuget\\packages\\microsoft.identitymodel.protocols\\8.0.1\\microsoft.identitymodel.protocols.8.0.1.nupkg.sha512",
+    "C:\\Users\\Hossam\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\8.0.1\\microsoft.identitymodel.protocols.openidconnect.8.0.1.nupkg.sha512",
     "C:\\Users\\Hossam\\.nuget\\packages\\microsoft.identitymodel.tokens\\8.14.0\\microsoft.identitymodel.tokens.8.14.0.nupkg.sha512",
     "C:\\Users\\Hossam\\.nuget\\packages\\system.identitymodel.tokens.jwt\\8.14.0\\system.identitymodel.tokens.jwt.8.14.0.nupkg.sha512"
   ],

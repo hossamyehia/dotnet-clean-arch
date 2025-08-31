@@ -1,5 +1,6 @@
 using BuberDinner.Api.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using ErrorOr;
 using MediatR;
 
@@ -12,6 +13,7 @@ namespace BuberDinner.Api.Controllers;
 
 
 [Route("auth")]
+[AllowAnonymous]
 public class AuthenticationController : ApiController
 {
     private readonly ISender _mediator;

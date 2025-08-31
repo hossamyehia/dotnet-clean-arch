@@ -1,6 +1,6 @@
 using BuberDinner.Api.Common.Http;
 using ErrorOr;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
@@ -8,6 +8,7 @@ namespace BuberDinner.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class ApiController : ControllerBase
 {
     protected IActionResult Problem(List<Error> errors)
@@ -42,7 +43,7 @@ public class ApiController : ControllerBase
         );
     }
 
-    private IActionResult ValidationProblem(List<Error> errors)
+    private ActionResult ValidationProblem(List<Error> errors)
     {
         var modelStateDictionary = new ModelStateDictionary();
         foreach (var error in errors)
