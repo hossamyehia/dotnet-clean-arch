@@ -1,6 +1,6 @@
 using System;
 
-namespace BuberDinner.Domain.Entities;
+namespace BuberDinner.Domain.User;
 
 public class User
 {
