@@ -1,6 +1,10 @@
+// <copyright file="Program.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+using BuberDinner.Api;
 using BuberDinner.Application;
 using BuberDinner.Infrastructure;
-using BuberDinner.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 {

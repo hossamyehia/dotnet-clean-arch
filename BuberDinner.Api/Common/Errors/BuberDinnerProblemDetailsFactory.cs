@@ -1,23 +1,40 @@
-using System;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.Extensions.Options;
+// <copyright file="BuberDinnerProblemDetailsFactory.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 using System.Diagnostics;
-using ErrorOr;
+
 using BuberDinner.Api.Common.Http;
+
+using ErrorOr;
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.Extensions.Options;
 
 namespace BuberDinner.Api.Common.Errors;
 
+/// <summary>
+/// Provides a custom implementation of <see cref="ProblemDetailsFactory"/> for BuberDinner API error handling.
+/// </summary>
 public class BuberDinnerProblemDetailsFactory : ProblemDetailsFactory
 {
     private readonly ApiBehaviorOptions _options;
     private readonly Action<ProblemDetailsContext>? _configure;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="BuberDinnerProblemDetailsFactory"/> class.
+    /// </summary>
+    /// <param name="options">The options for the API behavior.</param>
+    /// <param name="problemDetailsOptions">The options for problem details.</param>
     public BuberDinnerProblemDetailsFactory(IOptions<ApiBehaviorOptions> options, IOptions<ProblemDetailsOptions>? problemDetailsOptions = null)
     {
-        _options = options.Value;
-        _configure = problemDetailsOptions?.Value?.CustomizeProblemDetails;
+        this._options = options.Value;
+        this._configure = problemDetailsOptions?.Value?.CustomizeProblemDetails;
     }
+
+    /// <inheritdoc/>
     public override ProblemDetails CreateProblemDetails(
         HttpContext httpContext,
         int? statusCode = null,
@@ -37,11 +54,12 @@ public class BuberDinnerProblemDetailsFactory : ProblemDetailsFactory
             Instance = instance,
         };
 
-        ApplyProblemDetailsDefaults(httpContext, problemDetails, statusCode.Value);
+        this.ApplyProblemDetailsDefaults(httpContext, problemDetails, statusCode.Value);
 
         return problemDetails;
     }
 
+    /// <inheritdoc/>
     public override ValidationProblemDetails CreateValidationProblemDetails(
         HttpContext httpContext,
         ModelStateDictionary modelStateDictionary,
@@ -69,7 +87,7 @@ public class BuberDinnerProblemDetailsFactory : ProblemDetailsFactory
             problemDetails.Title = title;
         }
 
-        ApplyProblemDetailsDefaults(httpContext, problemDetails, statusCode.Value);
+        this.ApplyProblemDetailsDefaults(httpContext, problemDetails, statusCode.Value);
 
         return problemDetails;
     }
@@ -78,7 +96,7 @@ public class BuberDinnerProblemDetailsFactory : ProblemDetailsFactory
     {
         problemDetails.Status ??= statusCode;
 
-        if (_options.ClientErrorMapping.TryGetValue(statusCode, out var clientErrorData))
+        if (this._options.ClientErrorMapping.TryGetValue(statusCode, out var clientErrorData))
         {
             problemDetails.Title ??= clientErrorData.Title;
             problemDetails.Type ??= clientErrorData.Link;
@@ -95,6 +113,7 @@ public class BuberDinnerProblemDetailsFactory : ProblemDetailsFactory
         {
             problemDetails.Extensions.Add("errorCodes", errors.Select(e => e.Code));
         }
-        _configure?.Invoke(new() { HttpContext = httpContext!, ProblemDetails = problemDetails });
+
+        this._configure?.Invoke(new() { HttpContext = httpContext!, ProblemDetails = problemDetails });
     }
 }

@@ -1,4 +1,7 @@
-using System;
+// <copyright file="RegisterCommandHandler.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 using BuberDinner.Application.Authentication.Common;
 using BuberDinner.Application.Common.Interfaces.Authentication;
 using BuberDinner.Application.Common.Interfaces.Persistence;
@@ -9,39 +12,50 @@ using MediatR;
 
 namespace BuberDinner.Application.Authentication.Commands.Register;
 
+/// <summary>
+/// Handler for registering a new user.
+/// </summary>
 public class RegisterCommandHandler : IRequestHandler<RegisterCommand, ErrorOr<AuthenticationResult>>
 {
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
     private readonly IUserRepository _userRepository;
     private readonly IPasswordHasher _passwordHasher;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RegisterCommandHandler"/> class.
+    /// </summary>
+    /// <param name="jwtTokenGenerator">The JWT token generator.</param>
+    /// <param name="userRepository">The user repository.</param>
+    /// <param name="passwordHasher">The password hasher.</param>
+    /// <returns>A new instance of the <see cref="RegisterCommandHandler"/> class.</returns>
     public RegisterCommandHandler(IJwtTokenGenerator jwtTokenGenerator, IUserRepository userRepository, IPasswordHasher passwordHasher)
     {
-        _jwtTokenGenerator = jwtTokenGenerator;
-        _userRepository = userRepository;
-        _passwordHasher = passwordHasher;
+        this._jwtTokenGenerator = jwtTokenGenerator;
+        this._userRepository = userRepository;
+        this._passwordHasher = passwordHasher;
     }
 
+    /// <inheritdoc/>
     public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand command, CancellationToken cancellationToken)
     {
         await Task.CompletedTask;
 
-        if (_userRepository.GetUserByEmail(command.Email) is not null)
+        if (this._userRepository.GetUserByEmail(command.Email) is not null)
         {
             return Errors.User.DuplicateEmail;
         }
 
-        // Hash the password before storing it
-        var passwordHash = _passwordHasher.HashPassword(command.Password);
+        var passwordHash = this._passwordHasher.HashPassword(command.Password);
 
         var user = User.Create(command.FirstName, command.LastName, command.Email, passwordHash);
-        _userRepository.AddUser(user);
+        this._userRepository.AddUser(user);
 
-        var token = _jwtTokenGenerator.GenerateToken(user);
+        var token = this._jwtTokenGenerator.GenerateToken(user);
 
         return new AuthenticationResult
         {
             User = user,
-            Token = token
+            Token = token,
         };
     }
 }

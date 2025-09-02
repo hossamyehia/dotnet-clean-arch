@@ -1,33 +1,71 @@
-using System;
+// <copyright file="User.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 using BuberDinner.Domain.Common.Models;
 using BuberDinner.Domain.User.ValueObjects;
 
 namespace BuberDinner.Domain.User;
 
+/// <summary>
+/// User Aggregate Root.
+/// </summary>
 public sealed class User : AggregateRoot<UserId>
 {
-    public string FirstName { get; private set; }
-    public string LastName { get; private set; }
-    public string Email { get; private set; }
-    public string Password { get; private set; }
-    public DateTime CreatedDateTime { get; private set; }
-    public DateTime UpdatedDateTime { get; private set; }
-
     private User(
         UserId id,
         string firstName,
         string lastName,
         string email,
-        string password) : base(id)
+        string password)
+        : base(id)
     {
-        FirstName = firstName;
-        LastName = lastName;
-        Email = email;
-        Password = password;
-        CreatedDateTime = DateTime.UtcNow;
-        UpdatedDateTime = DateTime.UtcNow;
+        this.FirstName = firstName;
+        this.LastName = lastName;
+        this.Email = email;
+        this.Password = password;
+        this.CreatedDateTime = DateTime.UtcNow;
+        this.UpdatedDateTime = DateTime.UtcNow;
     }
 
+    /// <summary>
+    /// Gets the first name.
+    /// </summary>
+    public string FirstName { get; private set; }
+
+    /// <summary>
+    /// Gets the last name.
+    /// </summary>
+    public string LastName { get; private set; }
+
+    /// <summary>
+    /// Gets the email.
+    /// </summary>
+    public string Email { get; private set; }
+
+    /// <summary>
+    /// Gets the password.
+    /// </summary>
+    public string Password { get; private set; }
+
+    /// <summary>
+    /// Gets the created date time.
+    /// </summary>
+    public DateTime CreatedDateTime { get; private set; }
+
+    /// <summary>
+    /// Gets the updated date time.
+    /// </summary>
+    public DateTime UpdatedDateTime { get; private set; }
+
+    /// <summary>
+    /// Creates a new instance of <see cref="User"/>.
+    /// </summary>
+    /// <param name="firstName">First name.</param>
+    /// <param name="lastName">Last name.</param>
+    /// <param name="email">Email.</param>
+    /// <param name="password">Password.</param>
+    /// <returns>A new instance of <see cref="User"/>.</returns>
     public static User Create(string firstName, string lastName, string email, string password)
     {
         return new(
@@ -38,12 +76,19 @@ public sealed class User : AggregateRoot<UserId>
             password: password);
     }
 
+    /// <summary>
+    /// Updates the user.
+    /// </summary>
+    /// <param name="firstName">First name.</param>
+    /// <param name="lastName">Last name.</param>
+    /// <param name="email">Email.</param>
+    /// <param name="password">Password.</param>
     public void Update(string firstName, string lastName, string email, string password)
     {
-        FirstName = firstName;
-        LastName = lastName;
-        Email = email;
-        Password = password;
-        UpdatedDateTime = DateTime.UtcNow;
+        this.FirstName = firstName;
+        this.LastName = lastName;
+        this.Email = email;
+        this.Password = password;
+        this.UpdatedDateTime = DateTime.UtcNow;
     }
 }

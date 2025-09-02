@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "fJU8x/cdrcQ=",
+  "dgSpecHash": "4SP0JqTe6L0=",
   "success": true,
   "projectFilePath": "E:\\99. Others\\Development\\Web Development\\.Net\\New folder\\BuberDinner\\BuberDinner.Domain\\BuberDinner.Domain.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Hossam\\.nuget\\packages\\erroror\\2.0.1\\erroror.2.0.1.nupkg.sha512"
+    "C:\\Users\\Hossam\\.nuget\\packages\\erroror\\2.0.1\\erroror.2.0.1.nupkg.sha512",
+    "C:\\Users\\Hossam\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.435\\stylecop.analyzers.1.2.0-beta.435.nupkg.sha512",
+    "C:\\Users\\Hossam\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.435\\stylecop.analyzers.unstable.1.2.0.435.nupkg.sha512"
   ],
   "logs": []
 }

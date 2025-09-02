@@ -1,4 +1,7 @@
-using System;
+// <copyright file="Guest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 using BuberDinner.Domain.Bill.ValueObjects;
 using BuberDinner.Domain.Common.Models;
 using BuberDinner.Domain.Common.ValueObjects;
@@ -10,6 +13,9 @@ using BuberDinner.Domain.User.ValueObjects;
 
 namespace BuberDinner.Domain.Guest;
 
+/// <summary>
+/// Guest Aggregate Root.
+/// </summary>
 public sealed class Guest : AggregateRoot<GuestId>
 {
     private readonly List<DinnerId> _upcommingDinnerIds = new();
@@ -18,19 +24,6 @@ public sealed class Guest : AggregateRoot<GuestId>
     private readonly List<BillId> _billIds = new();
     private readonly List<MenuReviewId> _menuReviewIds = new();
     private readonly List<GuestRating> _ratings = new();
-    public string FirstName { get; private set; }
-    public string LastName { get; private set; }
-    public string profileImage { get; private set; }
-    public AverageRating AverageRating { get; private set; }
-    public UserId UserId { get; private set; }
-    public DateTime CreatedDateTime { get; private set; }
-    public DateTime UpdatedDateTime { get; private set; }
-    public IReadOnlyList<DinnerId> UpcommingDinnerIds => _upcommingDinnerIds.AsReadOnly();
-    public IReadOnlyList<DinnerId> PastDinnerIds => _pastDinnerIds.AsReadOnly();
-    public IReadOnlyList<DinnerId> PendingDinnerIds => _pendingDinnerIds.AsReadOnly();
-    public IReadOnlyList<BillId> BillIds => _billIds.AsReadOnly();
-    public IReadOnlyList<MenuReviewId> MenuReviewIds => _menuReviewIds.AsReadOnly();
-    public IReadOnlyList<GuestRating> Ratings => _ratings.AsReadOnly();
 
     private Guest(
         GuestId guestId,
@@ -40,16 +33,92 @@ public sealed class Guest : AggregateRoot<GuestId>
         AverageRating averageRating,
         UserId userId,
         DateTime createdDateTime,
-        DateTime updatedDateTime) : base(guestId)
+        DateTime updatedDateTime)
+        : base(guestId)
     {
-        FirstName = firstName;
-        LastName = lastName;
-        this.profileImage = profileImage;
-        AverageRating = averageRating;
-        UserId = userId;
-        CreatedDateTime = createdDateTime;
-        UpdatedDateTime = updatedDateTime;
+        this.FirstName = firstName;
+        this.LastName = lastName;
+        this.ProfileImage = profileImage;
+        this.AverageRating = averageRating;
+        this.UserId = userId;
+        this.CreatedDateTime = createdDateTime;
+        this.UpdatedDateTime = updatedDateTime;
     }
+
+    /// <summary>
+    /// Gets guest First Name.
+    /// </summary>
+    public string FirstName { get; private set; }
+
+    /// <summary>
+    /// Gets guest Last Name.
+    /// </summary>
+    public string LastName { get; private set; }
+
+    /// <summary>
+    /// Gets guest Profile Image.
+    /// </summary>
+    public string ProfileImage { get; private set; }
+
+    /// <summary>
+    /// Gets guest Average Rating.
+    /// </summary>
+    public AverageRating AverageRating { get; private set; }
+
+    /// <summary>
+    /// Gets guest User Id.
+    /// </summary>
+    public UserId UserId { get; private set; }
+
+    /// <summary>
+    /// Gets guest Created Date Time.
+    /// </summary>
+    public DateTime CreatedDateTime { get; private set; }
+
+    /// <summary>
+    /// Gets guest Updated Date Time.
+    /// </summary>
+    public DateTime UpdatedDateTime { get; private set; }
+
+    /// <summary>
+    /// Gets guest Upcomming Dinner Ids.
+    /// </summary>
+    public IReadOnlyList<DinnerId> UpcommingDinnerIds => this._upcommingDinnerIds.AsReadOnly();
+
+    /// <summary>
+    /// Gets guest Past Dinner Ids.
+    /// </summary>
+    public IReadOnlyList<DinnerId> PastDinnerIds => this._pastDinnerIds.AsReadOnly();
+
+    /// <summary>
+    /// Gets guest Pending Dinner Ids.
+    /// </summary>
+    public IReadOnlyList<DinnerId> PendingDinnerIds => this._pendingDinnerIds.AsReadOnly();
+
+    /// <summary>
+    /// Gets guest Bill Ids.
+    /// </summary>
+    public IReadOnlyList<BillId> BillIds => this._billIds.AsReadOnly();
+
+    /// <summary>
+    /// Gets guest Menu Review Ids.
+    /// </summary>
+    public IReadOnlyList<MenuReviewId> MenuReviewIds => this._menuReviewIds.AsReadOnly();
+
+    /// <summary>
+    /// Gets guest Ratings.
+    /// </summary>
+    public IReadOnlyList<GuestRating> Ratings => this._ratings.AsReadOnly();
+
+    /// <summary>
+    /// Creates a new instance of <see cref="Guest"/>.
+    /// </summary>
+    /// <param name="firstName">First Name.</param>
+    /// <param name="lastName">Last Name.</param>
+    /// <param name="profileImage">Profile Image.</param>
+    /// <param name="averageRating">Average Rating.</param>
+    /// <param name="userId">User Id.</param>
+    /// <returns>A new instance of <see cref="Guest"/>.</returns>
     public static Guest Create(
         string firstName,
         string lastName,

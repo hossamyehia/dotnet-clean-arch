@@ -1,22 +1,38 @@
-using System;
+// <copyright file="UserId.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 using BuberDinner.Domain.Common.Models;
 
 namespace BuberDinner.Domain.User.ValueObjects;
 
+/// <summary>
+/// UserId Value Object.
+/// </summary>
 public sealed class UserId : ValueObject
 {
-    public Guid Value { get; private set; }
-
     private UserId(Guid value)
     {
-        Value = value;
+        this.Value = value;
     }
 
+    /// <summary>
+    /// Gets the identifier.
+    /// </summary>
+    public Guid Value { get; private set; }
+
+    /// <summary>
+    /// Creates a new unique UserId.
+    /// </summary>
+    /// <returns>A new UserId.</returns>
     public static UserId CreateUnique() => new(Guid.NewGuid());
 
+    /// <inheritdoc/>
     public override IEnumerable<object> GetEqualityComponents()
     {
-        yield return Value;
+        yield return this.Value;
     }
-    public override string ToString() => Value.ToString();
+
+    /// <inheritdoc/>
+    public override string ToString() => this.Value.ToString();
 }

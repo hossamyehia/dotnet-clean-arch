@@ -1,4 +1,7 @@
-using System;
+// <copyright file="Reservation.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 using BuberDinner.Domain.Bill.ValueObjects;
 using BuberDinner.Domain.Common.Models;
 using BuberDinner.Domain.Dinner.Enums;
@@ -7,16 +10,15 @@ using BuberDinner.Domain.Guest.ValueObjects;
 
 namespace BuberDinner.Domain.Dinner.Entities;
 
+/// <summary>
+/// Represents a reservation made by a guest for a dinner event.
+/// </summary>
+/// <remarks>
+/// A reservation includes details such as the number of guests, reservation status,
+/// arrival time, and associated guest and bill information.
+/// </remarks>
 public sealed class Reservation : Entity<ReservationId>
 {
-    public int GuestCount { get; private set; }
-    public ReservationStatus ReservationStatus { get; private set; }
-    public DateTime ArrivalDateTime { get; private set; }
-    public DateTime CreatedDateTime { get; private set; }
-    public DateTime updatedDateTime { get; private set; }
-    public GuestId GuestId { get; private set; }
-    public BillId BillId { get; private set; }
-
     private Reservation(
         ReservationId reservationId,
         int guestCount,
@@ -25,17 +27,61 @@ public sealed class Reservation : Entity<ReservationId>
         DateTime createdDateTime,
         DateTime updatedDateTime,
         GuestId guestId,
-        BillId billId) : base(reservationId)
+        BillId billId)
+        : base(reservationId)
     {
-        GuestCount = guestCount;
-        ReservationStatus = reservationStatus;
-        ArrivalDateTime = arrivalDateTime;
-        CreatedDateTime = createdDateTime;
-        this.updatedDateTime = updatedDateTime;
-        GuestId = guestId;
-        BillId = billId;
+        this.GuestCount = guestCount;
+        this.ReservationStatus = reservationStatus;
+        this.ArrivalDateTime = arrivalDateTime;
+        this.CreatedDateTime = createdDateTime;
+        this.UpdatedDateTime = updatedDateTime;
+        this.GuestId = guestId;
+        this.BillId = billId;
     }
 
+    /// <summary>
+    /// Gets the number of guests for this reservation.
+    /// </summary>
+    public int GuestCount { get; private set; }
+
+    /// <summary>
+    /// Gets the current status of the reservation.
+    /// </summary>
+    public ReservationStatus ReservationStatus { get; private set; }
+
+    /// <summary>
+    /// Gets the scheduled arrival date and time for the reservation.
+    /// </summary>
+    public DateTime ArrivalDateTime { get; private set; }
+
+    /// <summary>
+    /// Gets the date and time when the reservation was created.
+    /// </summary>
+    public DateTime CreatedDateTime { get; private set; }
+
+    /// <summary>
+    /// Gets the date and time when the reservation was last updated.
+    /// </summary>
+    public DateTime UpdatedDateTime { get; private set; }
+
+    /// <summary>
+    /// Gets the identifier of the guest who made the reservation.
+    /// </summary>
+    public GuestId GuestId { get; private set; }
+
+    /// <summary>
+    /// Gets the identifier of the bill associated with this reservation.
+    /// </summary>
+    public BillId BillId { get; private set; }
+
+    /// <summary>
+    /// Creates a new reservation instance.
+    /// </summary>
+    /// <param name="guestCount">The number of guests in the reservation.</param>
+    /// <param name="arrivalDateTime">The scheduled arrival date and time.</param>
+    /// <param name="guestId">The identifier of the guest making the reservation.</param>
+    /// <param name="billId">The identifier of the associated bill.</param>
+    /// <returns>A new <see cref="Reservation"/> instance.</returns>
     public static Reservation Create(
         int guestCount,
         DateTime arrivalDateTime,
@@ -53,24 +99,32 @@ public sealed class Reservation : Entity<ReservationId>
             billId);
     }
 
+    /// <summary>
+    /// Confirms the reservation, changing its status to 'Reserved'.
+    /// </summary>
+    /// <exception cref="InvalidOperationException">Thrown if the reservation is not in a state where it can be confirmed.</exception>
     public void Confirm()
     {
-        if (ReservationStatus != ReservationStatus.PendingGuestConfirmation)
+        if (this.ReservationStatus != ReservationStatus.PendingGuestConfirmation)
         {
             throw new InvalidOperationException("Only pending reservations can be confirmed.");
         }
 
-        ReservationStatus = ReservationStatus.Reserved;
-        updatedDateTime = DateTime.UtcNow;
+        this.ReservationStatus = ReservationStatus.Reserved;
+        this.UpdatedDateTime = DateTime.UtcNow;
     }
+
+    /// <summary>
+    /// Cancels the reservation, changing its status to 'Cancelled'.
+    /// </summary>
     public void Cancel()
     {
-        if (ReservationStatus == ReservationStatus.Cancelled)
+        if (this.ReservationStatus == ReservationStatus.Cancelled)
         {
             throw new InvalidOperationException("Reservation is already cancelled.");
         }
 
-        ReservationStatus = ReservationStatus.Cancelled;
-        updatedDateTime = DateTime.UtcNow;
+        this.ReservationStatus = ReservationStatus.Cancelled;
+        this.UpdatedDateTime = DateTime.UtcNow;
     }
 }

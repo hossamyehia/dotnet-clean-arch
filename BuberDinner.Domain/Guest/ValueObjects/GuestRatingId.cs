@@ -1,31 +1,31 @@
-// <copyright file="MenuId.cs" company="PlaceholderCompany">
+// <copyright file="GuestRatingId.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 using BuberDinner.Domain.Common.Models;
 
-namespace BuberDinner.Domain.Menu.ValueObjects;
+namespace BuberDinner.Domain.Guest.ValueObjects;
 
 /// <summary>
-/// MenuId Value Object.
+/// Guest Rating Value Object.
 /// </summary>
-public sealed class MenuId : ValueObject
+public sealed class GuestRatingId : ValueObject
 {
-    private MenuId(Guid value)
+    private GuestRatingId(Guid value)
     {
         this.Value = value;
     }
 
     /// <summary>
-    /// Gets the Identifier.
+    /// Gets the identifier.
     /// </summary>
     public Guid Value { get; private set; }
 
     /// <summary>
-    /// Creates a new unique MenuId.
+    /// Creates a new unique GuestRatingId.
     /// </summary>
-    /// <returns>MenuId.</returns>
-    public static MenuId CreateUnique() => new(Guid.NewGuid());
+    /// <returns>A new GuestRatingId.</returns>
+    public static GuestRatingId CreateUnique() => new(Guid.NewGuid());
 
     /// <inheritdoc/>
     public override IEnumerable<object> GetEqualityComponents()

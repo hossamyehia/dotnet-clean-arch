@@ -1,21 +1,35 @@
-using System;
+// <copyright file="HostId.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 using BuberDinner.Domain.Common.Models;
 
 namespace BuberDinner.Domain.Host.ValueObjects;
 
+/// <summary>
+/// HostId Value Object.
+/// </summary>
 public sealed class HostId : ValueObject
 {
-    public Guid Value { get; private set; }
-
     private HostId(Guid value)
     {
-        Value = value;
+        this.Value = value;
     }
 
+    /// <summary>
+    /// Gets the Identifier.
+    /// </summary>
+    public Guid Value { get; private set; }
+
+    /// <summary>
+    /// Creates a new unique HostId.
+    /// </summary>
+    /// <returns>A new HostId.</returns>
     public static HostId CreateUnique() => new(Guid.NewGuid());
 
+    /// <inheritdoc/>
     public override IEnumerable<object> GetEqualityComponents()
     {
-        yield return Value;
+        yield return this.Value;
     }
 }
