@@ -33,13 +33,7 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, ErrorOr<A
         // Hash the password before storing it
         var passwordHash = _passwordHasher.HashPassword(command.Password);
 
-        var user = new User
-        {
-            FirstName = command.FirstName,
-            LastName = command.LastName,
-            Email = command.Email,
-            Password = passwordHash
-        };
+        var user = User.Create(command.FirstName, command.LastName, command.Email, passwordHash);
         _userRepository.AddUser(user);
 
         var token = _jwtTokenGenerator.GenerateToken(user);
