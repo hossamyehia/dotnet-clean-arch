@@ -5,6 +5,7 @@
 using BuberDinner.Application.Common.Interfaces.Authentication;
 using BuberDinner.Application.Common.Interfaces.Persistence;
 using BuberDinner.Application.Common.Services;
+using BuberDinner.Domain.MenuAggregate;
 using BuberDinner.Infrastructure.Authentication;
 using BuberDinner.Infrastructure.Persistence;
 using BuberDinner.Infrastructure.Services;
@@ -29,10 +30,24 @@ public static class DependencyInjection
     /// <returns>The updated service collection.</returns>
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, ConfigurationManager configuration)
     {
-        services.AddAuth(configuration);
+        services.AddAuth(configuration)
+                .AddPersistence(configuration);
         services.AddScoped<IPasswordHasher, PasswordHasher>();
         services.AddScoped<IDateTimeProvider, DateTimeProvider>();
+        return services;
+    }
+
+    /// <summary>
+    /// Adds persistence services to the specified service collection.
+    /// </summary>
+    /// <param name="services">The service collection to add services to.</param>
+    /// <param name="configuration">The configuration manager.</param>
+    /// <returns>The updated service collection.</returns>
+    public static IServiceCollection AddPersistence(this IServiceCollection services, ConfigurationManager configuration)
+    {
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IMenuRepository, MenuRepository>(); // For SQL Database
+        /*services.AddSingleton<IMenuRepository, MenuRepository>(); // For InMemory Database */
         return services;
     }
 

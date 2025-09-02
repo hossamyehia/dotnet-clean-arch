@@ -55,7 +55,7 @@ public sealed class Menu : AggregateRoot<MenuId>
     /// <summary>
     /// Gets the sections of the menu.
     /// </summary>
-    public IReadOnlyList<MenuSection> GetSections => this._sections.AsReadOnly();
+    public IReadOnlyList<MenuSection> Sections => this._sections.AsReadOnly();
 
     /// <summary>
     /// Gets the dinner ids associated with the menu.
@@ -83,11 +83,25 @@ public sealed class Menu : AggregateRoot<MenuId>
     /// <param name="name">The name of the menu.</param>
     /// <param name="description">The description of the menu.</param>
     /// <param name="hostId">The host id of the menu.</param>
-    /// <param name="averageRating">The average rating of the menu.</param>
+    /// <param name="sections">The sections of the menu.</param>
     /// <returns>A new instance of the <see cref="Menu"/> class.</returns>
-    public static Menu Create(string name, string description, HostId hostId, AverageRating averageRating)
+    public static Menu Create(string name, string description, HostId hostId, List<MenuSection>? sections)
     {
         var currentDateTime = DateTime.UtcNow;
-        return new(MenuId.CreateUnique(), name, description, hostId, averageRating, currentDateTime, currentDateTime);
+        var menu = new Menu(MenuId.CreateUnique(), name, description, hostId, AverageRating.Create(0, 0), currentDateTime, currentDateTime);
+        menu.AddSections(sections!);
+        return menu;
     }
+
+    /// <summary>
+    /// Adds a section to the menu.
+    /// </summary>
+    /// <param name="section">The section to add.</param>
+    public void AddSection(MenuSection section) => this._sections.Add(section);
+
+    /// <summary>
+    /// Adds multiple sections to the menu.
+    /// </summary>
+    /// <param name="sections">The sections to add.</param>
+    public void AddSections(List<MenuSection>? sections) => this._sections.AddRange(sections!);
 }

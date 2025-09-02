@@ -55,6 +55,14 @@
             <param name="services">The service collection to add services to.</param>
             <returns>The updated <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</returns>
         </member>
+        <member name="T:BuberDinner.Api.Common.Mapping.MenuMappingConfig">
+            <summary>
+            Mapping configuration for menu-related types.
+            </summary>
+        </member>
+        <member name="M:BuberDinner.Api.Common.Mapping.MenuMappingConfig.Register(Mapster.TypeAdapterConfig)">
+            <inheritdoc/>
+        </member>
         <member name="T:BuberDinner.Api.Controllers.ApiController">
             <summary>
             Base class for API controllers.
@@ -121,6 +129,34 @@
             Returns an error response with a status code and title.
             </summary>
             <returns>An IActionResult representing the error response.</returns>
+        </member>
+        <member name="T:BuberDinner.Api.Controllers.MenuController">
+            <summary>
+            Controller for handling menu-related requests.
+            </summary>
+            <seealso cref="T:BuberDinner.Api.Controllers.ApiController" />
+        </member>
+        <member name="M:BuberDinner.Api.Controllers.MenuController.#ctor(MediatR.ISender,MapsterMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BuberDinner.Api.Controllers.MenuController"/> class.
+            </summary>
+            <param name="mediator">The mediator instance.</param>
+            <param name="mapper">The mapper instance.</param>
+        </member>
+        <member name="M:BuberDinner.Api.Controllers.MenuController.CreateMenu(BuberDinner.Contracts.Menus.CreateMenuRequest,System.String)">
+            <summary>
+            Creates a new menu.
+            </summary>
+            <param name="request">The create menu request.</param>
+            <param name="hostId">The host identifier.</param>
+            <returns>An IActionResult representing the result of the menu creation.</returns>
+        </member>
+        <member name="M:BuberDinner.Api.Controllers.MenuController.GetMenus(BuberDinner.Contracts.Menus.GetMenusQueries)">
+            <summary>
+            Returns a list of all menus.
+            </summary>
+            <param name="queries">The menu queries.</param>
+            <returns>An IActionResult representing the list of menus.</returns>
         </member>
         <member name="T:BuberDinner.Api.DependencyInjection">
             <summary>

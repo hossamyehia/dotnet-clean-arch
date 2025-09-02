@@ -3,23 +3,26 @@
 // </copyright>
 
 using BuberDinner.Domain.Common.Models;
+using BuberDinner.Domain.Common.ValueObjects.ID;
 
 namespace BuberDinner.Domain.MenuAggregate.ValueObjects;
 
 /// <summary>
 /// MenuId Value Object.
 /// </summary>
-public sealed class MenuId : ValueObject
+public sealed class MenuId : AbstractID<Guid, MenuId>, IAbstractID<string, MenuId>
 {
     private MenuId(Guid value)
+        : base(value)
     {
-        this.Value = value;
     }
 
     /// <summary>
-    /// Gets the Identifier.
+    /// Implicit conversion from string to MenuId.
     /// </summary>
-    public Guid Value { get; private set; }
+    /// <param name="menuId">The string to convert.</param>
+    /// <returns>The converted MenuId.</returns>
+    public static implicit operator MenuId(string menuId) => CreateFrom(menuId);
 
     /// <summary>
     /// Creates a new unique MenuId.
@@ -27,9 +30,10 @@ public sealed class MenuId : ValueObject
     /// <returns>MenuId.</returns>
     public static MenuId CreateUnique() => new(Guid.NewGuid());
 
-    /// <inheritdoc/>
-    public override IEnumerable<object> GetEqualityComponents()
-    {
-        yield return this.Value;
-    }
+    /// <summary>
+    /// Creates a new MenuId from a string.
+    /// </summary>
+    /// <param name="value">String value.</param>
+    /// <returns>A new MenuId.</returns>
+    public static MenuId CreateFrom(string value) => new(Guid.Parse(value));
 }

@@ -72,6 +72,14 @@
             <param name="configuration">The configuration manager.</param>
             <returns>The updated service collection.</returns>
         </member>
+        <member name="M:BuberDinner.Infrastructure.DependencyInjection.AddPersistence(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.ConfigurationManager)">
+            <summary>
+            Adds persistence services to the specified service collection.
+            </summary>
+            <param name="services">The service collection to add services to.</param>
+            <param name="configuration">The configuration manager.</param>
+            <returns>The updated service collection.</returns>
+        </member>
         <member name="M:BuberDinner.Infrastructure.DependencyInjection.AddAuth(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.ConfigurationManager)">
             <summary>
             Adds authentication services to the specified service collection.
@@ -79,6 +87,20 @@
             <param name="services">The service collection to add services to.</param>
             <param name="configuration">The configuration manager.</param>
             <returns>The updated service collection.</returns>
+        </member>
+        <member name="T:BuberDinner.Infrastructure.Persistence.MenuRepository">
+            <summary>
+            In-memory menu repository for demonstration purposes.
+            </summary>
+        </member>
+        <member name="M:BuberDinner.Infrastructure.Persistence.MenuRepository.AddMenu(BuberDinner.Domain.MenuAggregate.Menu)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BuberDinner.Infrastructure.Persistence.MenuRepository.GetMenu(BuberDinner.Domain.MenuAggregate.ValueObjects.MenuId)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BuberDinner.Infrastructure.Persistence.MenuRepository.GetMenus(System.Int32,System.Int32)">
+            <inheritdoc/>
         </member>
         <member name="T:BuberDinner.Infrastructure.Persistence.UserRepository">
             <summary>

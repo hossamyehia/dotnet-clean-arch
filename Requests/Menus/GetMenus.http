@@ -1,0 +1,6 @@
+@host=https://localhost:7041
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ZmM5NTRlOS1lNDRiLTQzNGQtODQ0Ni0yZGZlMzM2ZDY5NzgiLCJnaXZlbl9uYW1lIjoiSm9obiIsImZhbWlseV9uYW1lIjoiRG9lIiwianRpIjoiOTRmY2E2OTYtZDVkYi00YTk4LWIyMmItYjJlMTAwNTgzZDZiIiwiZXhwIjoxNzU2ODEzMTYyLCJpc3MiOiJCdWJlckRpbm5lciIsImF1ZCI6IkJ1YmVyRGlubmVyIn0.pepSXkiLNCK2uCrsKqc2qIrpZSGBUkNe95Pu_yzzhMc
+@hostId=asdsa
+GET {{host}}/hosts/{{hostId}}/menus?pageNumber=1&pageSize=10
+Accept: application/json
+Authorization: Bearer {{token}}

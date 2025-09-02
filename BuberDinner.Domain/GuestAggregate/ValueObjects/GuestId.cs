@@ -3,23 +3,26 @@
 // </copyright>
 
 using BuberDinner.Domain.Common.Models;
+using BuberDinner.Domain.Common.ValueObjects.ID;
 
 namespace BuberDinner.Domain.GuestAggregate.ValueObjects;
 
 /// <summary>
 /// GuestId Value Object.
 /// </summary>
-public sealed class GuestId : ValueObject
+public sealed class GuestId : AbstractID<Guid, GuestId>, IAbstractID<string, GuestId>
 {
     private GuestId(Guid value)
+        : base(value)
     {
-        this.Value = value;
     }
 
     /// <summary>
-    /// Gets the identifier.
+    /// Implicit conversion from string to GuestId.
     /// </summary>
-    public Guid Value { get; }
+    /// <param name="guestId">String value.</param>
+    /// <returns>A new GuestId.</returns>
+    public static implicit operator GuestId(string guestId) => CreateFrom(guestId);
 
     /// <summary>
     /// Creates a new unique GuestId.
@@ -27,9 +30,10 @@ public sealed class GuestId : ValueObject
     /// <returns>A new GuestId.</returns>
     public static GuestId CreateUnique() => new(Guid.NewGuid());
 
-    /// <inheritdoc/>
-    public override IEnumerable<object> GetEqualityComponents()
-    {
-        yield return this.Value;
-    }
+    /// <summary>
+    /// Creates a new GuestId from a string.
+    /// </summary>
+    /// <param name="value">String value.</param>
+    /// <returns>A new GuestId.</returns>
+    public static GuestId CreateFrom(string value) => new(Guid.Parse(value));
 }

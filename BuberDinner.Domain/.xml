@@ -243,6 +243,50 @@
         <member name="M:BuberDinner.Domain.Common.ValueObjects.AverageRating.GetEqualityComponents">
             <inheritdoc/>
         </member>
+        <member name="T:BuberDinner.Domain.Common.ValueObjects.ID.AbstractID`2">
+            <summary>
+            Base Class For All IDs Value Objects.
+            </summary>
+            <typeparam name="TiD">The type of the identifier.</typeparam>
+            <typeparam name="T">The type of the ValueIDObject.</typeparam>
+        </member>
+        <member name="M:BuberDinner.Domain.Common.ValueObjects.ID.AbstractID`2.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BuberDinner.Domain.Common.ValueObjects.ID.AbstractID`2"/> class.
+            </summary>
+            <param name="value">The value of the Abstract ID.</param>
+        </member>
+        <member name="P:BuberDinner.Domain.Common.ValueObjects.ID.AbstractID`2.Value">
+            <summary>
+            Gets the value of the Abstract ID.
+            </summary>
+        </member>
+        <member name="M:BuberDinner.Domain.Common.ValueObjects.ID.AbstractID`2.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:BuberDinner.Domain.Common.ValueObjects.ID.AbstractID`2.GetEqualityComponents">
+            <inheritdoc/>
+        </member>
+        <member name="T:BuberDinner.Domain.Common.ValueObjects.ID.IAbstractID`2">
+            <summary>
+            Force the creation of a new instance of the ID Object.
+            </summary>
+            <typeparam name="TFrom">The type of the identifier.</typeparam>
+            <typeparam name="T">The type of the ID Object.</typeparam>
+        </member>
+        <member name="M:BuberDinner.Domain.Common.ValueObjects.ID.IAbstractID`2.CreateFrom(`0)">
+            <summary>
+            Creates a new instance of the T.
+            </summary>
+            <param name="value">The value of the identifier.</param>
+            <returns>A new instance of the ID Object.</returns>
+        </member>
+        <member name="M:BuberDinner.Domain.Common.ValueObjects.ID.IAbstractID`2.CreateUnique">
+            <summary>
+            Creates a new instance of the T.
+            </summary>
+            <returns>A new instance of the ID Object.</returns>
+        </member>
         <member name="T:BuberDinner.Domain.Common.ValueObjects.Price">
             <summary>
             Price Value Object.
@@ -731,10 +775,12 @@
             GuestId Value Object.
             </summary>
         </member>
-        <member name="P:BuberDinner.Domain.GuestAggregate.ValueObjects.GuestId.Value">
+        <member name="M:BuberDinner.Domain.GuestAggregate.ValueObjects.GuestId.op_Implicit(System.String)~BuberDinner.Domain.GuestAggregate.ValueObjects.GuestId">
             <summary>
-            Gets the identifier.
+            Implicit conversion from string to GuestId.
             </summary>
+            <param name="guestId">String value.</param>
+            <returns>A new GuestId.</returns>
         </member>
         <member name="M:BuberDinner.Domain.GuestAggregate.ValueObjects.GuestId.CreateUnique">
             <summary>
@@ -742,8 +788,12 @@
             </summary>
             <returns>A new GuestId.</returns>
         </member>
-        <member name="M:BuberDinner.Domain.GuestAggregate.ValueObjects.GuestId.GetEqualityComponents">
-            <inheritdoc/>
+        <member name="M:BuberDinner.Domain.GuestAggregate.ValueObjects.GuestId.CreateFrom(System.String)">
+            <summary>
+            Creates a new GuestId from a string.
+            </summary>
+            <param name="value">String value.</param>
+            <returns>A new GuestId.</returns>
         </member>
         <member name="T:BuberDinner.Domain.GuestAggregate.ValueObjects.GuestRatingId">
             <summary>
@@ -848,10 +898,12 @@
             HostId Value Object.
             </summary>
         </member>
-        <member name="P:BuberDinner.Domain.HostAggregate.ValueObjects.HostId.Value">
+        <member name="M:BuberDinner.Domain.HostAggregate.ValueObjects.HostId.op_Implicit(System.String)~BuberDinner.Domain.HostAggregate.ValueObjects.HostId">
             <summary>
-            Gets the Identifier.
+            Implicit conversion from string to Host ID.
             </summary>
+            <param name="hostId">The string to convert.</param>
+            <returns>The converted Host ID.</returns>
         </member>
         <member name="M:BuberDinner.Domain.HostAggregate.ValueObjects.HostId.CreateUnique">
             <summary>
@@ -859,8 +911,12 @@
             </summary>
             <returns>A new HostId.</returns>
         </member>
-        <member name="M:BuberDinner.Domain.HostAggregate.ValueObjects.HostId.GetEqualityComponents">
-            <inheritdoc/>
+        <member name="M:BuberDinner.Domain.HostAggregate.ValueObjects.HostId.CreateFrom(System.String)">
+            <summary>
+            Creates a new HostId from a string.
+            </summary>
+            <param name="value">String value.</param>
+            <returns>A new HostId.</returns>
         </member>
         <member name="T:BuberDinner.Domain.MenuAggregate.Entities.MenuItem">
             <summary>
@@ -911,13 +967,32 @@
             Gets the items.
             </summary>
         </member>
-        <member name="M:BuberDinner.Domain.MenuAggregate.Entities.MenuSection.Create(System.String,System.String)">
+        <member name="M:BuberDinner.Domain.MenuAggregate.Entities.MenuSection.Create(System.String,System.String,System.Collections.Generic.List{BuberDinner.Domain.MenuAggregate.Entities.MenuItem})">
             <summary>
             Creates a new instance of the <see cref="T:BuberDinner.Domain.MenuAggregate.Entities.MenuSection"/> class.
             </summary>
             <param name="name">The name of the menu section.</param>
             <param name="description">The description of the menu section.</param>
+            <param name="items">The items of the menu section.</param>
             <returns>A new instance of the <see cref="T:BuberDinner.Domain.MenuAggregate.Entities.MenuSection"/> class.</returns>
+        </member>
+        <member name="M:BuberDinner.Domain.MenuAggregate.Entities.MenuSection.AddItem(BuberDinner.Domain.MenuAggregate.Entities.MenuItem)">
+            <summary>
+            Adds a menu item to the menu section.
+            </summary>
+            <param name="menuItem">The menu item to add.</param>
+        </member>
+        <member name="M:BuberDinner.Domain.MenuAggregate.Entities.MenuSection.AddItems(System.Collections.Generic.List{BuberDinner.Domain.MenuAggregate.Entities.MenuItem})">
+            <summary>
+            Adds a menu item to the menu section.
+            </summary>
+            <param name="menuItem">The menu item to add.</param>
+        </member>
+        <member name="M:BuberDinner.Domain.MenuAggregate.Entities.MenuSection.RemoveItem(BuberDinner.Domain.MenuAggregate.Entities.MenuItem)">
+            <summary>
+            Removes a menu item from the menu section.
+            </summary>
+            <param name="menuItem">The menu item to remove.</param>
         </member>
         <member name="T:BuberDinner.Domain.MenuAggregate.Menu">
             <summary>
@@ -944,7 +1019,7 @@
             Gets the host id of the menu.
             </summary>
         </member>
-        <member name="P:BuberDinner.Domain.MenuAggregate.Menu.GetSections">
+        <member name="P:BuberDinner.Domain.MenuAggregate.Menu.Sections">
             <summary>
             Gets the sections of the menu.
             </summary>
@@ -969,25 +1044,39 @@
             Gets the date and time when the menu was last updated.
             </summary>
         </member>
-        <member name="M:BuberDinner.Domain.MenuAggregate.Menu.Create(System.String,System.String,BuberDinner.Domain.HostAggregate.ValueObjects.HostId,BuberDinner.Domain.Common.ValueObjects.AverageRating)">
+        <member name="M:BuberDinner.Domain.MenuAggregate.Menu.Create(System.String,System.String,BuberDinner.Domain.HostAggregate.ValueObjects.HostId,System.Collections.Generic.List{BuberDinner.Domain.MenuAggregate.Entities.MenuSection})">
             <summary>
             Creates a new instance of the <see cref="T:BuberDinner.Domain.MenuAggregate.Menu"/> class.
             </summary>
             <param name="name">The name of the menu.</param>
             <param name="description">The description of the menu.</param>
             <param name="hostId">The host id of the menu.</param>
-            <param name="averageRating">The average rating of the menu.</param>
+            <param name="sections">The sections of the menu.</param>
             <returns>A new instance of the <see cref="T:BuberDinner.Domain.MenuAggregate.Menu"/> class.</returns>
+        </member>
+        <member name="M:BuberDinner.Domain.MenuAggregate.Menu.AddSection(BuberDinner.Domain.MenuAggregate.Entities.MenuSection)">
+            <summary>
+            Adds a section to the menu.
+            </summary>
+            <param name="section">The section to add.</param>
+        </member>
+        <member name="M:BuberDinner.Domain.MenuAggregate.Menu.AddSections(System.Collections.Generic.List{BuberDinner.Domain.MenuAggregate.Entities.MenuSection})">
+            <summary>
+            Adds multiple sections to the menu.
+            </summary>
+            <param name="sections">The sections to add.</param>
         </member>
         <member name="T:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuId">
             <summary>
             MenuId Value Object.
             </summary>
         </member>
-        <member name="P:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuId.Value">
+        <member name="M:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuId.op_Implicit(System.String)~BuberDinner.Domain.MenuAggregate.ValueObjects.MenuId">
             <summary>
-            Gets the Identifier.
+            Implicit conversion from string to MenuId.
             </summary>
+            <param name="menuId">The string to convert.</param>
+            <returns>The converted MenuId.</returns>
         </member>
         <member name="M:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuId.CreateUnique">
             <summary>
@@ -995,8 +1084,12 @@
             </summary>
             <returns>MenuId.</returns>
         </member>
-        <member name="M:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuId.GetEqualityComponents">
-            <inheritdoc/>
+        <member name="M:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuId.CreateFrom(System.String)">
+            <summary>
+            Creates a new MenuId from a string.
+            </summary>
+            <param name="value">String value.</param>
+            <returns>A new MenuId.</returns>
         </member>
         <member name="T:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuItemId">
             <summary>

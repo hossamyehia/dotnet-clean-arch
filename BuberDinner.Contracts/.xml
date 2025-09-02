@@ -74,5 +74,85 @@
             Gets the password of the user.
             </summary>
         </member>
+        <member name="T:BuberDinner.Contracts.Menus.CreateMenuRequest">
+            <summary>
+            Create Menu Request record.
+            </summary>
+        </member>
+        <member name="M:BuberDinner.Contracts.Menus.CreateMenuRequest.#ctor(System.String,System.String,System.Collections.Generic.List{BuberDinner.Contracts.Menus.MenuSection})">
+            <summary>
+            Create Menu Request record.
+            </summary>
+        </member>
+        <member name="T:BuberDinner.Contracts.Menus.MenuSection">
+            <summary>
+            Menu Section record.
+            </summary>
+        </member>
+        <member name="M:BuberDinner.Contracts.Menus.MenuSection.#ctor(System.String,System.String,System.Collections.Generic.List{BuberDinner.Contracts.Menus.MenuItem})">
+            <summary>
+            Menu Section record.
+            </summary>
+        </member>
+        <member name="T:BuberDinner.Contracts.Menus.MenuItem">
+            <summary>
+            Menu Item record.
+            </summary>
+        </member>
+        <member name="M:BuberDinner.Contracts.Menus.MenuItem.#ctor(System.String,System.String)">
+            <summary>
+            Menu Item record.
+            </summary>
+        </member>
+        <member name="T:BuberDinner.Contracts.Menus.GetMenusQueries">
+            <summary>
+            Query for getting menus.
+            </summary>
+            <param name="PageNumber">The page number.</param>
+            <param name="PageSize">Size of the page.</param>
+        </member>
+        <member name="M:BuberDinner.Contracts.Menus.GetMenusQueries.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Query for getting menus.
+            </summary>
+            <param name="PageNumber">The page number.</param>
+            <param name="PageSize">Size of the page.</param>
+        </member>
+        <member name="P:BuberDinner.Contracts.Menus.GetMenusQueries.PageNumber">
+            <summary>The page number.</summary>
+        </member>
+        <member name="P:BuberDinner.Contracts.Menus.GetMenusQueries.PageSize">
+            <summary>Size of the page.</summary>
+        </member>
+        <member name="T:BuberDinner.Contracts.Menus.MenuResponse">
+            <summary>
+            Menu Response record.
+            </summary>
+        </member>
+        <member name="M:BuberDinner.Contracts.Menus.MenuResponse.#ctor(System.Guid,System.String,System.String,System.Single,System.Collections.Generic.List{BuberDinner.Contracts.Menus.MenuSectionResponse},System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.DateTime,System.DateTime)">
+            <summary>
+            Menu Response record.
+            </summary>
+        </member>
+        <member name="T:BuberDinner.Contracts.Menus.MenuSectionResponse">
+            <summary>
+            Menu Section Response record.
+            </summary>
+        </member>
+        <member name="M:BuberDinner.Contracts.Menus.MenuSectionResponse.#ctor(System.Guid,System.String,System.String,System.Collections.Generic.List{BuberDinner.Contracts.Menus.MenuItemResponse})">
+            <summary>
+            Menu Section Response record.
+            </summary>
+        </member>
+        <member name="T:BuberDinner.Contracts.Menus.MenuItemResponse">
+            <summary>
+            Menu Item Response record.
+            </summary>
+        </member>
+        <member name="M:BuberDinner.Contracts.Menus.MenuItemResponse.#ctor(System.Guid,System.String,System.String)">
+            <summary>
+            Menu Item Response record.
+            </summary>
+        </member>
     </members>
 </doc>

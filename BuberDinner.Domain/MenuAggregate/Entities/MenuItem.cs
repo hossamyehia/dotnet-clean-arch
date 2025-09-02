@@ -42,7 +42,7 @@ public sealed class MenuItem : Entity<MenuItemId>
     /// <param name="description">The description of the menu item.</param>
     /// <param name="price">The price of the menu item.</param>
     /// <returns>A new instance of the <see cref="MenuItem"/> class.</returns>
-    public static MenuItem Create(string name, string description, decimal price)
+    public static MenuItem Create(string name, string description, decimal price = 0)
     {
         return new(MenuItemId.CreateUnique(), name, description, price);
     }

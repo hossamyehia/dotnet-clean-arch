@@ -169,6 +169,33 @@
             <param name="hash">The hash.</param>
             <returns>True if the password matches the hash; otherwise, false.</returns>
         </member>
+        <member name="T:BuberDinner.Application.Common.Interfaces.Persistence.IMenuRepository">
+            <summary>
+            Menu repository interface.
+            </summary>
+        </member>
+        <member name="M:BuberDinner.Application.Common.Interfaces.Persistence.IMenuRepository.AddMenu(BuberDinner.Domain.MenuAggregate.Menu)">
+            <summary>
+            Add a new menu.
+            </summary>
+            <param name="menu">Menu.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:BuberDinner.Application.Common.Interfaces.Persistence.IMenuRepository.GetMenu(BuberDinner.Domain.MenuAggregate.ValueObjects.MenuId)">
+            <summary>
+            Get a menu by its id.
+            </summary>
+            <param name="menuId">Menu id.</param>
+            <returns>A menu.</returns>
+        </member>
+        <member name="M:BuberDinner.Application.Common.Interfaces.Persistence.IMenuRepository.GetMenus(System.Int32,System.Int32)">
+            <summary>
+            Get all menus.
+            </summary>
+            <param name="pageNumber">Page number.</param>
+            <param name="pageSize">Page size.</param>
+            <returns>A list of menus.</returns>
+        </member>
         <member name="T:BuberDinner.Application.Common.Interfaces.Persistence.IUserRepository">
             <summary>
             User repository interface.
@@ -209,6 +236,134 @@
             </summary>
             <param name="services">The service collection to add services to.</param>
             <returns>The updated <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</returns>
+        </member>
+        <member name="T:BuberDinner.Application.Menus.Commands.CreateMenu.CreateMenuCommand">
+            <summary>
+            Create Menu Command record.
+            </summary>
+            <param name="Name">The name.</param>
+            <param name="Description">The description.</param>
+            <param name="Sections">The sections.</param>
+            <param name="HostId">The host identifier.</param>
+        </member>
+        <member name="M:BuberDinner.Application.Menus.Commands.CreateMenu.CreateMenuCommand.#ctor(System.String,System.String,System.Collections.Generic.List{BuberDinner.Application.Menus.Commands.CreateMenu.MenuSectionCommand},System.String)">
+            <summary>
+            Create Menu Command record.
+            </summary>
+            <param name="Name">The name.</param>
+            <param name="Description">The description.</param>
+            <param name="Sections">The sections.</param>
+            <param name="HostId">The host identifier.</param>
+        </member>
+        <member name="P:BuberDinner.Application.Menus.Commands.CreateMenu.CreateMenuCommand.Name">
+            <summary>The name.</summary>
+        </member>
+        <member name="P:BuberDinner.Application.Menus.Commands.CreateMenu.CreateMenuCommand.Description">
+            <summary>The description.</summary>
+        </member>
+        <member name="P:BuberDinner.Application.Menus.Commands.CreateMenu.CreateMenuCommand.Sections">
+            <summary>The sections.</summary>
+        </member>
+        <member name="P:BuberDinner.Application.Menus.Commands.CreateMenu.CreateMenuCommand.HostId">
+            <summary>The host identifier.</summary>
+        </member>
+        <member name="T:BuberDinner.Application.Menus.Commands.CreateMenu.MenuSectionCommand">
+            <summary>
+            Menu Section record.
+            </summary>
+            <param name="Name">The name.</param>
+            <param name="Description">The description.</param>
+            <param name="Items">The items.</param>
+        </member>
+        <member name="M:BuberDinner.Application.Menus.Commands.CreateMenu.MenuSectionCommand.#ctor(System.String,System.String,System.Collections.Generic.List{BuberDinner.Application.Menus.Commands.CreateMenu.MenuItemCommand})">
+            <summary>
+            Menu Section record.
+            </summary>
+            <param name="Name">The name.</param>
+            <param name="Description">The description.</param>
+            <param name="Items">The items.</param>
+        </member>
+        <member name="P:BuberDinner.Application.Menus.Commands.CreateMenu.MenuSectionCommand.Name">
+            <summary>The name.</summary>
+        </member>
+        <member name="P:BuberDinner.Application.Menus.Commands.CreateMenu.MenuSectionCommand.Description">
+            <summary>The description.</summary>
+        </member>
+        <member name="P:BuberDinner.Application.Menus.Commands.CreateMenu.MenuSectionCommand.Items">
+            <summary>The items.</summary>
+        </member>
+        <member name="T:BuberDinner.Application.Menus.Commands.CreateMenu.MenuItemCommand">
+            <summary>
+            Menu Item record.
+            </summary>
+            <param name="Name">The name.</param>
+            <param name="Description">The description.</param>
+        </member>
+        <member name="M:BuberDinner.Application.Menus.Commands.CreateMenu.MenuItemCommand.#ctor(System.String,System.String)">
+            <summary>
+            Menu Item record.
+            </summary>
+            <param name="Name">The name.</param>
+            <param name="Description">The description.</param>
+        </member>
+        <member name="P:BuberDinner.Application.Menus.Commands.CreateMenu.MenuItemCommand.Name">
+            <summary>The name.</summary>
+        </member>
+        <member name="P:BuberDinner.Application.Menus.Commands.CreateMenu.MenuItemCommand.Description">
+            <summary>The description.</summary>
+        </member>
+        <member name="T:BuberDinner.Application.Menus.Commands.CreateMenu.CreateMenuCommandHandler">
+            <summary>
+            Create Menu Command Handler.
+            </summary>
+        </member>
+        <member name="M:BuberDinner.Application.Menus.Commands.CreateMenu.CreateMenuCommandHandler.#ctor(BuberDinner.Application.Common.Interfaces.Persistence.IMenuRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BuberDinner.Application.Menus.Commands.CreateMenu.CreateMenuCommandHandler"/> class.
+            </summary>
+            <param name="menuRepository">The menu repository.</param>
+        </member>
+        <member name="M:BuberDinner.Application.Menus.Commands.CreateMenu.CreateMenuCommandHandler.Handle(BuberDinner.Application.Menus.Commands.CreateMenu.CreateMenuCommand,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="T:BuberDinner.Application.Menus.Queries.GetMenus.GetMenusQuery">
+            <summary>
+            Query for getting menus.
+            </summary>
+            <param name="PageNumber">The page number.</param>
+            <param name="PageSize">Size of the page.</param>
+        </member>
+        <member name="M:BuberDinner.Application.Menus.Queries.GetMenus.GetMenusQuery.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Query for getting menus.
+            </summary>
+            <param name="PageNumber">The page number.</param>
+            <param name="PageSize">Size of the page.</param>
+        </member>
+        <member name="P:BuberDinner.Application.Menus.Queries.GetMenus.GetMenusQuery.PageNumber">
+            <summary>The page number.</summary>
+        </member>
+        <member name="P:BuberDinner.Application.Menus.Queries.GetMenus.GetMenusQuery.PageSize">
+            <summary>Size of the page.</summary>
+        </member>
+        <member name="T:BuberDinner.Application.Menus.Queries.GetMenus.GetMenusQueryHandler">
+            <summary>
+            Query handler for getting menus.
+            </summary>
+        </member>
+        <member name="M:BuberDinner.Application.Menus.Queries.GetMenus.GetMenusQueryHandler.#ctor(BuberDinner.Application.Common.Interfaces.Persistence.IMenuRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BuberDinner.Application.Menus.Queries.GetMenus.GetMenusQueryHandler"/> class.
+            </summary>
+            <param name="menuRepository">The menu repository.</param>
+        </member>
+        <member name="M:BuberDinner.Application.Menus.Queries.GetMenus.GetMenusQueryHandler.Handle(BuberDinner.Application.Menus.Queries.GetMenus.GetMenusQuery,System.Threading.CancellationToken)">
+            <summary>
+            Handles the specified request.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
         </member>
     </members>
 </doc>
