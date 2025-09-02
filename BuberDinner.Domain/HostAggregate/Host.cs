@@ -19,6 +19,12 @@ public sealed class Host : AggregateRoot<HostId>
     private readonly List<MenuId> _menus = new();
     private readonly List<DinnerId> _dinners = new();
 
+    #pragma warning disable CS8618
+    private Host()
+    {
+    }
+    #pragma warning restore CS8618
+
     private Host(
         HostId hostId,
         string firstName,

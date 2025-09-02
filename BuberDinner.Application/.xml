@@ -326,6 +326,16 @@
         <member name="M:BuberDinner.Application.Menus.Commands.CreateMenu.CreateMenuCommandHandler.Handle(BuberDinner.Application.Menus.Commands.CreateMenu.CreateMenuCommand,System.Threading.CancellationToken)">
             <inheritdoc/>
         </member>
+        <member name="T:BuberDinner.Application.Menus.Commands.CreateMenu.CreateMenuCommandValidator">
+            <summary>
+            Validator for CreateMenuCommand.
+            </summary>
+        </member>
+        <member name="M:BuberDinner.Application.Menus.Commands.CreateMenu.CreateMenuCommandValidator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BuberDinner.Application.Menus.Commands.CreateMenu.CreateMenuCommandValidator"/> class.
+            </summary>
+        </member>
         <member name="T:BuberDinner.Application.Menus.Queries.GetMenus.GetMenusQuery">
             <summary>
             Query for getting menus.

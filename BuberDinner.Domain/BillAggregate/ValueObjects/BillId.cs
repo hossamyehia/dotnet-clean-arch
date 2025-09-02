@@ -3,33 +3,44 @@
 // </copyright>
 
 using BuberDinner.Domain.Common.Models;
+using BuberDinner.Domain.Common.ValueObjects.ID;
 
 namespace BuberDinner.Domain.BillAggregate.ValueObjects;
 
 /// <summary>
 /// BillId Value Object.
 /// </summary>
-public sealed class BillId : ValueObject
+public sealed class BillId : AbstractID<Guid, BillId>, IConvertableID<Guid, string, BillId>
 {
     private BillId(Guid value)
+        : base(value)
     {
-        this.Value = value;
     }
 
     /// <summary>
-    /// Gets the Identifier.
+    /// Implicit conversion from string to Bill Id.
     /// </summary>
-    public Guid Value { get; }
+    /// <param name="billid">The string to convert.</param>
+    /// <returns>The converted Bill Id.</returns>
+    public static implicit operator BillId(string billid) => CreateFrom(billid);
 
     /// <summary>
     /// Creates a new unique BillId.
     /// </summary>
-    /// <returns>A new BillId.</returns>
+    /// <returns>BillId.</returns>
     public static BillId CreateUnique() => new(Guid.NewGuid());
 
-    /// <inheritdoc/>
-    public override IEnumerable<object> GetEqualityComponents()
-    {
-        yield return this.Value;
-    }
+    /// <summary>
+    /// Creates a new Bill Id from a string.
+    /// </summary>
+    /// <param name="value">String value.</param>
+    /// <returns>A new BillId.</returns>
+    public static BillId CreateFrom(string value) => new(Guid.Parse(value));
+
+    /// <summary>
+    /// Creates a new BillId from a Guid.
+    /// </summary>
+    /// <param name="value">Guid value.</param>
+    /// <returns>A new BillId.</returns>
+    public static BillId Create(Guid value) => new(value);
 }

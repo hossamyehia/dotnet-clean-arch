@@ -3,33 +3,44 @@
 // </copyright>
 
 using BuberDinner.Domain.Common.Models;
+using BuberDinner.Domain.Common.ValueObjects.ID;
 
 namespace BuberDinner.Domain.DinnerAggregate.ValueObjects;
 
 /// <summary>
 /// DinnerId Value Object.
 /// </summary>
-public sealed class DinnerId : ValueObject
+public sealed class DinnerId : AbstractID<Guid, DinnerId>, IConvertableID<Guid, string, DinnerId>
 {
     private DinnerId(Guid value)
+        : base(value)
     {
-        this.Value = value;
     }
 
     /// <summary>
-    /// Gets the Identifier.
+    /// Implicit conversion from string to Dinner Id.
     /// </summary>
-    public Guid Value { get; private set; }
+    /// <param name="dinnerId">The string to convert.</param>
+    /// <returns>The converted Dinner Id.</returns>
+    public static implicit operator DinnerId(string dinnerId) => CreateFrom(dinnerId);
 
     /// <summary>
-    /// Creates a unique DinnerId.
+    /// Creates a new unique DinnerId.
     /// </summary>
     /// <returns>DinnerId.</returns>
     public static DinnerId CreateUnique() => new(Guid.NewGuid());
 
-    /// <inheritdoc/>
-    public override IEnumerable<object> GetEqualityComponents()
-    {
-        yield return this.Value;
-    }
+    /// <summary>
+    /// Creates a new Dinner Id from a string.
+    /// </summary>
+    /// <param name="value">String value.</param>
+    /// <returns>A new DinnerId.</returns>
+    public static DinnerId CreateFrom(string value) => new(Guid.Parse(value));
+
+    /// <summary>
+    /// Creates a new DinnerId from a Guid.
+    /// </summary>
+    /// <param name="value">Guid value.</param>
+    /// <returns>A new DinnerId.</returns>
+    public static DinnerId Create(Guid value) => new(value);
 }

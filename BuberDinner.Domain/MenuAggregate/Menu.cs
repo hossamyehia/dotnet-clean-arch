@@ -21,6 +21,12 @@ public sealed class Menu : AggregateRoot<MenuId>
     private readonly List<DinnerId> _dinnerIds = new();
     private readonly List<MenuReviewId> _menuReviewIds = new();
 
+    #pragma warning disable CS8618
+    private Menu()
+    {
+    }
+    #pragma warning restore CS8618
+
     private Menu(MenuId id, string name, string description, HostId hostId, AverageRating averageRating, DateTime createdDateTime, DateTime updatedDateTime)
         : base(id)
     {

@@ -11,6 +11,15 @@ namespace BuberDinner.Domain.Common.Models;
 public abstract class Entity<TId> : IEquatable<Entity<TId>>
     where TId : notnull
 {
+    #pragma warning disable CS8618
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Entity{TId}"/> class.
+    /// </summary>
+    protected Entity()
+    {
+    }
+    #pragma warning restore CS8618
+
     /// <summary>
     /// Initializes a new instance of the <see cref="Entity{TId}"/> class.
     /// </summary>

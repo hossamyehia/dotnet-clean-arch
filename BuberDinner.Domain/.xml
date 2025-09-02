@@ -46,19 +46,32 @@
             BillId Value Object.
             </summary>
         </member>
-        <member name="P:BuberDinner.Domain.BillAggregate.ValueObjects.BillId.Value">
+        <member name="M:BuberDinner.Domain.BillAggregate.ValueObjects.BillId.op_Implicit(System.String)~BuberDinner.Domain.BillAggregate.ValueObjects.BillId">
             <summary>
-            Gets the Identifier.
+            Implicit conversion from string to Bill Id.
             </summary>
+            <param name="billid">The string to convert.</param>
+            <returns>The converted Bill Id.</returns>
         </member>
         <member name="M:BuberDinner.Domain.BillAggregate.ValueObjects.BillId.CreateUnique">
             <summary>
             Creates a new unique BillId.
             </summary>
+            <returns>BillId.</returns>
+        </member>
+        <member name="M:BuberDinner.Domain.BillAggregate.ValueObjects.BillId.CreateFrom(System.String)">
+            <summary>
+            Creates a new Bill Id from a string.
+            </summary>
+            <param name="value">String value.</param>
             <returns>A new BillId.</returns>
         </member>
-        <member name="M:BuberDinner.Domain.BillAggregate.ValueObjects.BillId.GetEqualityComponents">
-            <inheritdoc/>
+        <member name="M:BuberDinner.Domain.BillAggregate.ValueObjects.BillId.Create(System.Guid)">
+            <summary>
+            Creates a new BillId from a Guid.
+            </summary>
+            <param name="value">Guid value.</param>
+            <returns>A new BillId.</returns>
         </member>
         <member name="T:BuberDinner.Domain.Common.Errors.Errors">
             <summary>
@@ -105,11 +118,21 @@
             </summary>
             <param name="id">The identifier for the aggregate root.</param>
         </member>
+        <member name="M:BuberDinner.Domain.Common.Models.AggregateRoot`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BuberDinner.Domain.Common.Models.AggregateRoot`1"/> class.
+            </summary>
+        </member>
         <member name="T:BuberDinner.Domain.Common.Models.Entity`1">
             <summary>
             Base class for all entities in the domain.
             </summary>
             <typeparam name="TId">The type of the entity's identifier.</typeparam>
+        </member>
+        <member name="M:BuberDinner.Domain.Common.Models.Entity`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BuberDinner.Domain.Common.Models.Entity`1"/> class.
+            </summary>
         </member>
         <member name="M:BuberDinner.Domain.Common.Models.Entity`1.#ctor(`0)">
             <summary>
@@ -271,10 +294,10 @@
             <summary>
             Force the creation of a new instance of the ID Object.
             </summary>
-            <typeparam name="TFrom">The type of the identifier.</typeparam>
+            <typeparam name="TId">The type of the identifier.</typeparam>
             <typeparam name="T">The type of the ID Object.</typeparam>
         </member>
-        <member name="M:BuberDinner.Domain.Common.ValueObjects.ID.IAbstractID`2.CreateFrom(`0)">
+        <member name="M:BuberDinner.Domain.Common.ValueObjects.ID.IAbstractID`2.Create(`0)">
             <summary>
             Creates a new instance of the T.
             </summary>
@@ -285,6 +308,21 @@
             <summary>
             Creates a new instance of the T.
             </summary>
+            <returns>A new instance of the ID Object.</returns>
+        </member>
+        <member name="T:BuberDinner.Domain.Common.ValueObjects.ID.IConvertableID`3">
+            <summary>
+            Interface for Ensuring the possibility to convert the ID Object.
+            </summary>
+            <typeparam name="TId">The type of the identifier.</typeparam>
+            <typeparam name="TFrom">The type of the input parameter.</typeparam>
+            <typeparam name="T">The type of the ID Object.</typeparam>
+        </member>
+        <member name="M:BuberDinner.Domain.Common.ValueObjects.ID.IConvertableID`3.CreateFrom(`1)">
+            <summary>
+            Creates a new instance of the T.
+            </summary>
+            <param name="value">The value of the identifier.</param>
             <returns>A new instance of the ID Object.</returns>
         </member>
         <member name="T:BuberDinner.Domain.Common.ValueObjects.Price">
@@ -569,19 +607,32 @@
             DinnerId Value Object.
             </summary>
         </member>
-        <member name="P:BuberDinner.Domain.DinnerAggregate.ValueObjects.DinnerId.Value">
+        <member name="M:BuberDinner.Domain.DinnerAggregate.ValueObjects.DinnerId.op_Implicit(System.String)~BuberDinner.Domain.DinnerAggregate.ValueObjects.DinnerId">
             <summary>
-            Gets the Identifier.
+            Implicit conversion from string to Dinner Id.
             </summary>
+            <param name="dinnerId">The string to convert.</param>
+            <returns>The converted Dinner Id.</returns>
         </member>
         <member name="M:BuberDinner.Domain.DinnerAggregate.ValueObjects.DinnerId.CreateUnique">
             <summary>
-            Creates a unique DinnerId.
+            Creates a new unique DinnerId.
             </summary>
             <returns>DinnerId.</returns>
         </member>
-        <member name="M:BuberDinner.Domain.DinnerAggregate.ValueObjects.DinnerId.GetEqualityComponents">
-            <inheritdoc/>
+        <member name="M:BuberDinner.Domain.DinnerAggregate.ValueObjects.DinnerId.CreateFrom(System.String)">
+            <summary>
+            Creates a new Dinner Id from a string.
+            </summary>
+            <param name="value">String value.</param>
+            <returns>A new DinnerId.</returns>
+        </member>
+        <member name="M:BuberDinner.Domain.DinnerAggregate.ValueObjects.DinnerId.Create(System.Guid)">
+            <summary>
+            Creates a new DinnerId from a Guid.
+            </summary>
+            <param name="value">Guid value.</param>
+            <returns>A new DinnerId.</returns>
         </member>
         <member name="T:BuberDinner.Domain.DinnerAggregate.ValueObjects.Location">
             <summary>
@@ -629,26 +680,32 @@
             This value object encapsulates a GUID to uniquely identify a reservation instance.
             </remarks>
         </member>
-        <member name="M:BuberDinner.Domain.DinnerAggregate.ValueObjects.ReservationId.#ctor(System.Guid)">
+        <member name="M:BuberDinner.Domain.DinnerAggregate.ValueObjects.ReservationId.op_Implicit(System.String)~BuberDinner.Domain.DinnerAggregate.ValueObjects.ReservationId">
             <summary>
-            Initializes a new instance of the <see cref="T:BuberDinner.Domain.DinnerAggregate.ValueObjects.ReservationId"/> class.
+            Implicit conversion from string to Reservation Id.
             </summary>
-            <param name="value">The GUID value representing the reservation identifier.</param>
-        </member>
-        <member name="P:BuberDinner.Domain.DinnerAggregate.ValueObjects.ReservationId.Value">
-            <summary>
-            Gets the value of the reservation identifier.
-            </summary>
-            <value>The GUID value representing the reservation identifier.</value>
+            <param name="dinnerId">The string to convert.</param>
+            <returns>The converted Reservation Id.</returns>
         </member>
         <member name="M:BuberDinner.Domain.DinnerAggregate.ValueObjects.ReservationId.CreateUnique">
             <summary>
-            Creates a new unique instance of <see cref="T:BuberDinner.Domain.DinnerAggregate.ValueObjects.ReservationId"/>.
+            Creates a new unique ReservationId.
             </summary>
-            <returns>A new unique instance of <see cref="T:BuberDinner.Domain.DinnerAggregate.ValueObjects.ReservationId"/>.</returns>
+            <returns>ReservationId.</returns>
         </member>
-        <member name="M:BuberDinner.Domain.DinnerAggregate.ValueObjects.ReservationId.GetEqualityComponents">
-            <inheritdoc/>
+        <member name="M:BuberDinner.Domain.DinnerAggregate.ValueObjects.ReservationId.CreateFrom(System.String)">
+            <summary>
+            Creates a new Reservation Id from a string.
+            </summary>
+            <param name="value">String value.</param>
+            <returns>A new ReservationId.</returns>
+        </member>
+        <member name="M:BuberDinner.Domain.DinnerAggregate.ValueObjects.ReservationId.Create(System.Guid)">
+            <summary>
+            Creates a new ReservationId from a Guid.
+            </summary>
+            <param name="value">Guid value.</param>
+            <returns>A new ReservationId.</returns>
         </member>
         <member name="T:BuberDinner.Domain.GuestAggregate.Entities.GuestRating">
             <summary>
@@ -795,24 +852,44 @@
             <param name="value">String value.</param>
             <returns>A new GuestId.</returns>
         </member>
+        <member name="M:BuberDinner.Domain.GuestAggregate.ValueObjects.GuestId.Create(System.Guid)">
+            <summary>
+            Creates a new Guest Id from a Guid.
+            </summary>
+            <param name="value">Guid value.</param>
+            <returns>A new Guest Id.</returns>
+        </member>
         <member name="T:BuberDinner.Domain.GuestAggregate.ValueObjects.GuestRatingId">
             <summary>
             Guest Rating Value Object.
             </summary>
         </member>
-        <member name="P:BuberDinner.Domain.GuestAggregate.ValueObjects.GuestRatingId.Value">
+        <member name="M:BuberDinner.Domain.GuestAggregate.ValueObjects.GuestRatingId.op_Implicit(System.String)~BuberDinner.Domain.GuestAggregate.ValueObjects.GuestRatingId">
             <summary>
-            Gets the identifier.
+            Implicit conversion from string to GuestRating Id.
             </summary>
+            <param name="guestRatingId">String value.</param>
+            <returns>A new GuestRating Id.</returns>
         </member>
         <member name="M:BuberDinner.Domain.GuestAggregate.ValueObjects.GuestRatingId.CreateUnique">
             <summary>
-            Creates a new unique GuestRatingId.
+            Creates a new unique GuestRating Id.
             </summary>
-            <returns>A new GuestRatingId.</returns>
+            <returns>A new GuestRating Id.</returns>
         </member>
-        <member name="M:BuberDinner.Domain.GuestAggregate.ValueObjects.GuestRatingId.GetEqualityComponents">
-            <inheritdoc/>
+        <member name="M:BuberDinner.Domain.GuestAggregate.ValueObjects.GuestRatingId.CreateFrom(System.String)">
+            <summary>
+            Creates a new GuestRating Id from a string.
+            </summary>
+            <param name="value">String value.</param>
+            <returns>A new GuestRating Id.</returns>
+        </member>
+        <member name="M:BuberDinner.Domain.GuestAggregate.ValueObjects.GuestRatingId.Create(System.Guid)">
+            <summary>
+            Creates a new GuestRating Id from a Guid.
+            </summary>
+            <param name="value">Guid value.</param>
+            <returns>A new GuestRating Id.</returns>
         </member>
         <member name="T:BuberDinner.Domain.HostAggregate.Host">
             <summary>
@@ -900,18 +977,25 @@
         </member>
         <member name="M:BuberDinner.Domain.HostAggregate.ValueObjects.HostId.op_Implicit(System.String)~BuberDinner.Domain.HostAggregate.ValueObjects.HostId">
             <summary>
-            Implicit conversion from string to Host ID.
+            Implicit conversion from string to HostId.
             </summary>
             <param name="hostId">The string to convert.</param>
-            <returns>The converted Host ID.</returns>
+            <returns>The converted HostId.</returns>
         </member>
         <member name="M:BuberDinner.Domain.HostAggregate.ValueObjects.HostId.CreateUnique">
             <summary>
             Creates a new unique HostId.
             </summary>
-            <returns>A new HostId.</returns>
+            <returns>HostId.</returns>
         </member>
         <member name="M:BuberDinner.Domain.HostAggregate.ValueObjects.HostId.CreateFrom(System.String)">
+            <summary>
+            Creates a new HostId from a string.
+            </summary>
+            <param name="value">String value.</param>
+            <returns>A new HostId.</returns>
+        </member>
+        <member name="M:BuberDinner.Domain.HostAggregate.ValueObjects.HostId.Create(System.Guid)">
             <summary>
             Creates a new HostId from a string.
             </summary>
@@ -933,18 +1017,12 @@
             Gets the description of the menu item.
             </summary>
         </member>
-        <member name="P:BuberDinner.Domain.MenuAggregate.Entities.MenuItem.Price">
-            <summary>
-            Gets the price of the menu item.
-            </summary>
-        </member>
-        <member name="M:BuberDinner.Domain.MenuAggregate.Entities.MenuItem.Create(System.String,System.String,System.Decimal)">
+        <member name="M:BuberDinner.Domain.MenuAggregate.Entities.MenuItem.Create(System.String,System.String)">
             <summary>
             Creates a new instance of the <see cref="T:BuberDinner.Domain.MenuAggregate.Entities.MenuItem"/> class.
             </summary>
             <param name="name">The name of the menu item.</param>
             <param name="description">The description of the menu item.</param>
-            <param name="price">The price of the menu item.</param>
             <returns>A new instance of the <see cref="T:BuberDinner.Domain.MenuAggregate.Entities.MenuItem"/> class.</returns>
         </member>
         <member name="T:BuberDinner.Domain.MenuAggregate.Entities.MenuSection">
@@ -1091,49 +1169,76 @@
             <param name="value">String value.</param>
             <returns>A new MenuId.</returns>
         </member>
+        <member name="M:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuId.Create(System.Guid)">
+            <summary>
+            Creates a new MenuId from a Guid.
+            </summary>
+            <param name="value">String value.</param>
+            <returns>A new MenuId.</returns>
+        </member>
         <member name="T:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuItemId">
             <summary>
             MenuItemId Value Object.
             </summary>
         </member>
-        <member name="P:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuItemId.Value">
+        <member name="M:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuItemId.op_Implicit(System.String)~BuberDinner.Domain.MenuAggregate.ValueObjects.MenuItemId">
             <summary>
-            Gets the Identifier.
+            Implicit conversion from string to MenuItem Id.
             </summary>
+            <param name="menuItemId">The string to convert.</param>
+            <returns>The converted MenuItem Id.</returns>
         </member>
         <member name="M:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuItemId.CreateUnique">
             <summary>
-            Creates a unique MenuItemId.
+            Creates a new unique MenuItem Id.
             </summary>
-            <returns>A new MenuItemId.</returns>
+            <returns>MenuItem Id.</returns>
         </member>
-        <member name="M:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuItemId.GetEqualityComponents">
-            <inheritdoc/>
+        <member name="M:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuItemId.CreateFrom(System.String)">
+            <summary>
+            Creates a new MenuItemId from a string.
+            </summary>
+            <param name="value">String value.</param>
+            <returns>A new MenuItem Id.</returns>
+        </member>
+        <member name="M:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuItemId.Create(System.Guid)">
+            <summary>
+            Creates a new MenuItemId from a Guid.
+            </summary>
+            <param name="value">String value.</param>
+            <returns>A new MenuItem Id.</returns>
         </member>
         <member name="T:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuSectionId">
             <summary>
             Menu Section Id Value Object.
             </summary>
         </member>
-        <member name="M:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuSectionId.#ctor(System.Guid)">
+        <member name="M:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuSectionId.op_Implicit(System.String)~BuberDinner.Domain.MenuAggregate.ValueObjects.MenuSectionId">
             <summary>
-            Initializes a new instance of the <see cref="T:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuSectionId"/> class.
+            Implicit conversion from string to MenuSection Id.
             </summary>
-            <param name="value">The value.</param>
-        </member>
-        <member name="P:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuSectionId.Value">
-            <summary>
-            Gets the Identifier.
-            </summary>
+            <param name="menuSectionId">The string to convert.</param>
+            <returns>The converted MenuSection Id.</returns>
         </member>
         <member name="M:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuSectionId.CreateUnique">
             <summary>
-            Creates a unique MenuSectionId.
+            Creates a new unique MenuSection Id.
             </summary>
-            <returns>MenuSectionId.</returns>
+            <returns>MenuSection Id.</returns>
         </member>
-        <member name="M:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuSectionId.GetEqualityComponents">
-            <inheritdoc/>
+        <member name="M:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuSectionId.CreateFrom(System.String)">
+            <summary>
+            Creates a new MenuSectionId from a string.
+            </summary>
+            <param name="value">String value.</param>
+            <returns>A new MenuSection Id.</returns>
+        </member>
+        <member name="M:BuberDinner.Domain.MenuAggregate.ValueObjects.MenuSectionId.Create(System.Guid)">
+            <summary>
+            Creates a new MenuSectionId from a Guid.
+            </summary>
+            <param name="value">String value.</param>
+            <returns>A new MenuSection Id.</returns>
         </member>
         <member name="T:BuberDinner.Domain.MenuReviewAggregate.MenuReview">
             <summary>
@@ -1191,25 +1296,32 @@
             MenuReviewId Value Object.
             </summary>
         </member>
-        <member name="M:BuberDinner.Domain.MenuReviewAggregate.ValueObjects.MenuReviewId.#ctor(System.Guid)">
+        <member name="M:BuberDinner.Domain.MenuReviewAggregate.ValueObjects.MenuReviewId.op_Implicit(System.String)~BuberDinner.Domain.MenuReviewAggregate.ValueObjects.MenuReviewId">
             <summary>
-            Initializes a new instance of the <see cref="T:BuberDinner.Domain.MenuReviewAggregate.ValueObjects.MenuReviewId"/> class.
+            Implicit conversion from string to MenuReview Id.
             </summary>
-            <param name="value">The value.</param>
-        </member>
-        <member name="P:BuberDinner.Domain.MenuReviewAggregate.ValueObjects.MenuReviewId.Value">
-            <summary>
-            Gets the Identifier.
-            </summary>
+            <param name="menuReviewId">The string to convert.</param>
+            <returns>The converted MenuReview Id.</returns>
         </member>
         <member name="M:BuberDinner.Domain.MenuReviewAggregate.ValueObjects.MenuReviewId.CreateUnique">
             <summary>
-            Creates a unique MenuReviewId.
+            Creates a new unique MenuReview Id.
             </summary>
-            <returns>MenuReviewId.</returns>
+            <returns>MenuReview Id.</returns>
         </member>
-        <member name="M:BuberDinner.Domain.MenuReviewAggregate.ValueObjects.MenuReviewId.GetEqualityComponents">
-            <inheritdoc/>
+        <member name="M:BuberDinner.Domain.MenuReviewAggregate.ValueObjects.MenuReviewId.CreateFrom(System.String)">
+            <summary>
+            Creates a new MenuReviewId from a string.
+            </summary>
+            <param name="value">String value.</param>
+            <returns>A new MenuReview Id.</returns>
+        </member>
+        <member name="M:BuberDinner.Domain.MenuReviewAggregate.ValueObjects.MenuReviewId.Create(System.Guid)">
+            <summary>
+            Creates a new MenuReviewId from a Guid.
+            </summary>
+            <param name="value">String value.</param>
+            <returns>A new MenuReview Id.</returns>
         </member>
         <member name="T:BuberDinner.Domain.UserAggregate.User">
             <summary>
@@ -1270,22 +1382,32 @@
             UserId Value Object.
             </summary>
         </member>
-        <member name="P:BuberDinner.Domain.UserAggregate.ValueObjects.UserId.Value">
+        <member name="M:BuberDinner.Domain.UserAggregate.ValueObjects.UserId.op_Implicit(System.String)~BuberDinner.Domain.UserAggregate.ValueObjects.UserId">
             <summary>
-            Gets the identifier.
+            Implicit conversion from string to UserId.
             </summary>
+            <param name="userId">The string to convert.</param>
+            <returns>The converted UserId.</returns>
         </member>
         <member name="M:BuberDinner.Domain.UserAggregate.ValueObjects.UserId.CreateUnique">
             <summary>
             Creates a new unique UserId.
             </summary>
+            <returns>UserId.</returns>
+        </member>
+        <member name="M:BuberDinner.Domain.UserAggregate.ValueObjects.UserId.CreateFrom(System.String)">
+            <summary>
+            Creates a new UserId from a string.
+            </summary>
+            <param name="value">String value.</param>
             <returns>A new UserId.</returns>
         </member>
-        <member name="M:BuberDinner.Domain.UserAggregate.ValueObjects.UserId.GetEqualityComponents">
-            <inheritdoc/>
-        </member>
-        <member name="M:BuberDinner.Domain.UserAggregate.ValueObjects.UserId.ToString">
-            <inheritdoc/>
+        <member name="M:BuberDinner.Domain.UserAggregate.ValueObjects.UserId.Create(System.Guid)">
+            <summary>
+            Creates a new UserId from a Guid.
+            </summary>
+            <param name="value">String value.</param>
+            <returns>A new UserId.</returns>
         </member>
     </members>
 </doc>

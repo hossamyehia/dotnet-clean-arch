@@ -2,38 +2,44 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-using BuberDinner.Domain.Common.Models;
+using BuberDinner.Domain.Common.ValueObjects.ID;
 
 namespace BuberDinner.Domain.MenuAggregate.ValueObjects;
 
 /// <summary>
 /// Menu Section Id Value Object.
 /// </summary>
-public sealed class MenuSectionId : ValueObject
+public sealed class MenuSectionId : AbstractID<Guid, MenuSectionId>, IConvertableID<Guid, string, MenuSectionId>
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="MenuSectionId"/> class.
-    /// </summary>
-    /// <param name="value">The value.</param>
     private MenuSectionId(Guid value)
+        : base(value)
     {
-        this.Value = value;
     }
 
     /// <summary>
-    /// Gets the Identifier.
+    /// Implicit conversion from string to MenuSection Id.
     /// </summary>
-    public Guid Value { get; private set; }
+    /// <param name="menuSectionId">The string to convert.</param>
+    /// <returns>The converted MenuSection Id.</returns>
+    public static implicit operator MenuSectionId(string menuSectionId) => CreateFrom(menuSectionId);
 
     /// <summary>
-    /// Creates a unique MenuSectionId.
+    /// Creates a new unique MenuSection Id.
     /// </summary>
-    /// <returns>MenuSectionId.</returns>
+    /// <returns>MenuSection Id.</returns>
     public static MenuSectionId CreateUnique() => new(Guid.NewGuid());
 
-    /// <inheritdoc/>
-    public override IEnumerable<object> GetEqualityComponents()
-    {
-        yield return this.Value;
-    }
+    /// <summary>
+    /// Creates a new MenuSectionId from a string.
+    /// </summary>
+    /// <param name="value">String value.</param>
+    /// <returns>A new MenuSection Id.</returns>
+    public static MenuSectionId CreateFrom(string value) => new(Guid.Parse(value));
+
+    /// <summary>
+    /// Creates a new MenuSectionId from a Guid.
+    /// </summary>
+    /// <param name="value">String value.</param>
+    /// <returns>A new MenuSection Id.</returns>
+    public static MenuSectionId Create(Guid value) => new(value);
 }

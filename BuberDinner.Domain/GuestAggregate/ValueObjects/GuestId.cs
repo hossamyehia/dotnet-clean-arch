@@ -10,7 +10,7 @@ namespace BuberDinner.Domain.GuestAggregate.ValueObjects;
 /// <summary>
 /// GuestId Value Object.
 /// </summary>
-public sealed class GuestId : AbstractID<Guid, GuestId>, IAbstractID<string, GuestId>
+public sealed class GuestId : AbstractID<Guid, GuestId>, IConvertableID<Guid, string, GuestId>
 {
     private GuestId(Guid value)
         : base(value)
@@ -36,4 +36,11 @@ public sealed class GuestId : AbstractID<Guid, GuestId>, IAbstractID<string, Gue
     /// <param name="value">String value.</param>
     /// <returns>A new GuestId.</returns>
     public static GuestId CreateFrom(string value) => new(Guid.Parse(value));
+
+    /// <summary>
+    /// Creates a new Guest Id from a Guid.
+    /// </summary>
+    /// <param name="value">Guid value.</param>
+    /// <returns>A new Guest Id.</returns>
+    public static GuestId Create(Guid value) => new(value);
 }

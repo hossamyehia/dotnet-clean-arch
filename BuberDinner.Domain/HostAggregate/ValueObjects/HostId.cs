@@ -10,7 +10,7 @@ namespace BuberDinner.Domain.HostAggregate.ValueObjects;
 /// <summary>
 /// HostId Value Object.
 /// </summary>
-public sealed class HostId : AbstractID<Guid, HostId>, IAbstractID<string, HostId>
+public sealed class HostId : AbstractID<Guid, HostId>, IConvertableID<Guid, string, HostId>
 {
     private HostId(Guid value)
         : base(value)
@@ -18,16 +18,16 @@ public sealed class HostId : AbstractID<Guid, HostId>, IAbstractID<string, HostI
     }
 
     /// <summary>
-    /// Implicit conversion from string to Host ID.
+    /// Implicit conversion from string to HostId.
     /// </summary>
     /// <param name="hostId">The string to convert.</param>
-    /// <returns>The converted Host ID.</returns>
+    /// <returns>The converted HostId.</returns>
     public static implicit operator HostId(string hostId) => CreateFrom(hostId);
 
     /// <summary>
     /// Creates a new unique HostId.
     /// </summary>
-    /// <returns>A new HostId.</returns>
+    /// <returns>HostId.</returns>
     public static HostId CreateUnique() => new(Guid.NewGuid());
 
     /// <summary>
@@ -40,4 +40,11 @@ public sealed class HostId : AbstractID<Guid, HostId>, IAbstractID<string, HostI
         bool isValid = Guid.TryParse(value, out Guid iD);
         return isValid ? new HostId(iD) : HostId.CreateUnique();
     }
+
+    /// <summary>
+    /// Creates a new HostId from a string.
+    /// </summary>
+    /// <param name="value">String value.</param>
+    /// <returns>A new HostId.</returns>
+    public static HostId Create(Guid value) => new(value);
 }

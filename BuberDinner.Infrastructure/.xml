@@ -88,30 +88,103 @@
             <param name="configuration">The configuration manager.</param>
             <returns>The updated service collection.</returns>
         </member>
-        <member name="T:BuberDinner.Infrastructure.Persistence.MenuRepository">
+        <member name="T:BuberDinner.Infrastructure.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:BuberDinner.Infrastructure.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:BuberDinner.Infrastructure.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:BuberDinner.Infrastructure.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:BuberDinner.Infrastructure.Persistence.BuberDinnerDbContext">
+            <summary>
+            Database context for the BuberDinner application.
+            </summary>
+        </member>
+        <member name="M:BuberDinner.Infrastructure.Persistence.BuberDinnerDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{BuberDinner.Infrastructure.Persistence.BuberDinnerDbContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:BuberDinner.Infrastructure.Persistence.BuberDinnerDbContext"/> class.
+            </summary>
+            <param name="options">The options.</param>
+        </member>
+        <member name="P:BuberDinner.Infrastructure.Persistence.BuberDinnerDbContext.Menus">
+            <summary>
+            Gets or sets the menus.
+            </summary>
+            <value>The menus.</value>
+        </member>
+        <member name="M:BuberDinner.Infrastructure.Persistence.BuberDinnerDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Configures the model.
+            </summary>
+            <param name="modelBuilder">The model builder.</param>
+        </member>
+        <member name="T:BuberDinner.Infrastructure.Persistence.Configurations.MenuConfigurations">
+            <summary>
+            Configuration for the Menu entity.
+            </summary>
+        </member>
+        <member name="M:BuberDinner.Infrastructure.Persistence.Configurations.MenuConfigurations.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{BuberDinner.Domain.MenuAggregate.Menu})">
+            <inheritdoc/>
+        </member>
+        <member name="M:BuberDinner.Infrastructure.Persistence.Configurations.MenuConfigurations.ConfigureMenusTable(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{BuberDinner.Domain.MenuAggregate.Menu})">
+            <summary>
+            Configures the menus table.
+            </summary>
+            <param name="builder">The entity type builder.</param>
+        </member>
+        <member name="M:BuberDinner.Infrastructure.Persistence.Configurations.MenuConfigurations.ConfigureMenuSectionsTable(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{BuberDinner.Domain.MenuAggregate.Menu})">
+            <summary>
+            Configures the menu sections table.
+            </summary>
+            <param name="builder">The entity type builder.</param>
+        </member>
+        <member name="M:BuberDinner.Infrastructure.Persistence.Configurations.MenuConfigurations.ConfigureMenuDinnerIdsTable(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{BuberDinner.Domain.MenuAggregate.Menu})">
+            <summary>
+            Configures the menu dinner ids table.
+            </summary>
+            <param name="builder">The entity type builder.</param>
+        </member>
+        <member name="M:BuberDinner.Infrastructure.Persistence.Configurations.MenuConfigurations.ConfigureMenuReviewIdsTable(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{BuberDinner.Domain.MenuAggregate.Menu})">
+            <summary>
+            Configures the menu review ids table.
+            </summary>
+            <param name="builder">The entity type builder.</param>
+        </member>
+        <member name="T:BuberDinner.Infrastructure.Persistence.Repositories.MenuRepository">
             <summary>
             In-memory menu repository for demonstration purposes.
             </summary>
         </member>
-        <member name="M:BuberDinner.Infrastructure.Persistence.MenuRepository.AddMenu(BuberDinner.Domain.MenuAggregate.Menu)">
+        <member name="M:BuberDinner.Infrastructure.Persistence.Repositories.MenuRepository.#ctor(BuberDinner.Infrastructure.Persistence.BuberDinnerDbContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BuberDinner.Infrastructure.Persistence.Repositories.MenuRepository"/> class.
+            </summary>
+            <param name="context">The database context.</param>
+        </member>
+        <member name="M:BuberDinner.Infrastructure.Persistence.Repositories.MenuRepository.AddMenu(BuberDinner.Domain.MenuAggregate.Menu)">
             <inheritdoc/>
         </member>
-        <member name="M:BuberDinner.Infrastructure.Persistence.MenuRepository.GetMenu(BuberDinner.Domain.MenuAggregate.ValueObjects.MenuId)">
+        <member name="M:BuberDinner.Infrastructure.Persistence.Repositories.MenuRepository.GetMenu(BuberDinner.Domain.MenuAggregate.ValueObjects.MenuId)">
             <inheritdoc/>
         </member>
-        <member name="M:BuberDinner.Infrastructure.Persistence.MenuRepository.GetMenus(System.Int32,System.Int32)">
+        <member name="M:BuberDinner.Infrastructure.Persistence.Repositories.MenuRepository.GetMenus(System.Int32,System.Int32)">
             <inheritdoc/>
         </member>
-        <member name="T:BuberDinner.Infrastructure.Persistence.UserRepository">
+        <member name="T:BuberDinner.Infrastructure.Persistence.Repositories.UserRepository">
             <summary>
             In-memory user repository for demonstration purposes.
             </summary>
             <remarks>Replace with a real database implementation in production.</remarks>
         </member>
-        <member name="M:BuberDinner.Infrastructure.Persistence.UserRepository.GetUserByEmail(System.String)">
+        <member name="M:BuberDinner.Infrastructure.Persistence.Repositories.UserRepository.GetUserByEmail(System.String)">
             <inheritdoc/>
         </member>
-        <member name="M:BuberDinner.Infrastructure.Persistence.UserRepository.AddUser(BuberDinner.Domain.UserAggregate.User)">
+        <member name="M:BuberDinner.Infrastructure.Persistence.Repositories.UserRepository.AddUser(BuberDinner.Domain.UserAggregate.User)">
             <inheritdoc/>
         </member>
         <member name="T:BuberDinner.Infrastructure.Services.DateTimeProvider">

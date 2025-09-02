@@ -14,6 +14,12 @@ namespace BuberDinner.Domain.GuestAggregate.Entities;
 /// </summary>
 public sealed class GuestRating : Entity<GuestRatingId>
 {
+    #pragma warning disable CS8618
+    private GuestRating()
+    {
+    }
+    #pragma warning restore CS8618
+
     private GuestRating(
         GuestRatingId guestRatingId,
         HostId hostId,

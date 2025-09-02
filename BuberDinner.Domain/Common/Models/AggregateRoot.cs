@@ -22,4 +22,13 @@ public abstract class AggregateRoot<TId> : Entity<TId>
         : base(id)
     {
     }
+
+    #pragma warning disable CS8618
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AggregateRoot{TId}"/> class.
+    /// </summary>
+    protected AggregateRoot()
+    {
+    }
+    #pragma warning restore CS8618
 }

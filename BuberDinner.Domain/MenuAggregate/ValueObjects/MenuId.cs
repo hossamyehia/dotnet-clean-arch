@@ -2,7 +2,6 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-using BuberDinner.Domain.Common.Models;
 using BuberDinner.Domain.Common.ValueObjects.ID;
 
 namespace BuberDinner.Domain.MenuAggregate.ValueObjects;
@@ -10,7 +9,7 @@ namespace BuberDinner.Domain.MenuAggregate.ValueObjects;
 /// <summary>
 /// MenuId Value Object.
 /// </summary>
-public sealed class MenuId : AbstractID<Guid, MenuId>, IAbstractID<string, MenuId>
+public sealed class MenuId : AbstractID<Guid, MenuId>, IConvertableID<Guid, string, MenuId>
 {
     private MenuId(Guid value)
         : base(value)
@@ -36,4 +35,11 @@ public sealed class MenuId : AbstractID<Guid, MenuId>, IAbstractID<string, MenuI
     /// <param name="value">String value.</param>
     /// <returns>A new MenuId.</returns>
     public static MenuId CreateFrom(string value) => new(Guid.Parse(value));
+
+    /// <summary>
+    /// Creates a new MenuId from a Guid.
+    /// </summary>
+    /// <param name="value">String value.</param>
+    /// <returns>A new MenuId.</returns>
+    public static MenuId Create(Guid value) => new(value);
 }

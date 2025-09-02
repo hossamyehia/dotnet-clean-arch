@@ -2,38 +2,44 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-using BuberDinner.Domain.Common.Models;
+using BuberDinner.Domain.Common.ValueObjects.ID;
 
 namespace BuberDinner.Domain.MenuReviewAggregate.ValueObjects;
 
 /// <summary>
 /// MenuReviewId Value Object.
 /// </summary>
-public sealed class MenuReviewId : ValueObject
+public sealed class MenuReviewId : AbstractID<Guid, MenuReviewId>, IConvertableID<Guid, string, MenuReviewId>
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="MenuReviewId"/> class.
-    /// </summary>
-    /// <param name="value">The value.</param>
     private MenuReviewId(Guid value)
+        : base(value)
     {
-        this.Value = value;
     }
 
     /// <summary>
-    /// Gets the Identifier.
+    /// Implicit conversion from string to MenuReview Id.
     /// </summary>
-    public Guid Value { get; private set; }
+    /// <param name="menuReviewId">The string to convert.</param>
+    /// <returns>The converted MenuReview Id.</returns>
+    public static implicit operator MenuReviewId(string menuReviewId) => CreateFrom(menuReviewId);
 
     /// <summary>
-    /// Creates a unique MenuReviewId.
+    /// Creates a new unique MenuReview Id.
     /// </summary>
-    /// <returns>MenuReviewId.</returns>
+    /// <returns>MenuReview Id.</returns>
     public static MenuReviewId CreateUnique() => new(Guid.NewGuid());
 
-    /// <inheritdoc/>
-    public override IEnumerable<object> GetEqualityComponents()
-    {
-        yield return this.Value;
-    }
+    /// <summary>
+    /// Creates a new MenuReviewId from a string.
+    /// </summary>
+    /// <param name="value">String value.</param>
+    /// <returns>A new MenuReview Id.</returns>
+    public static MenuReviewId CreateFrom(string value) => new(Guid.Parse(value));
+
+    /// <summary>
+    /// Creates a new MenuReviewId from a Guid.
+    /// </summary>
+    /// <param name="value">String value.</param>
+    /// <returns>A new MenuReview Id.</returns>
+    public static MenuReviewId Create(Guid value) => new(value);
 }

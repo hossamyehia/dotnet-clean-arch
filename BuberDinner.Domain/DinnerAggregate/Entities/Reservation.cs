@@ -19,6 +19,12 @@ namespace BuberDinner.Domain.DinnerAggregate.Entities;
 /// </remarks>
 public sealed class Reservation : Entity<ReservationId>
 {
+    #pragma warning disable CS8618
+    private Reservation()
+    {
+    }
+    #pragma warning restore CS8618
+
     private Reservation(
         ReservationId reservationId,
         int guestCount,

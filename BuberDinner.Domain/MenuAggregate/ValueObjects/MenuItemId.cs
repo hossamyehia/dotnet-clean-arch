@@ -2,34 +2,44 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-using BuberDinner.Domain.Common.Models;
+using BuberDinner.Domain.Common.ValueObjects.ID;
 
 namespace BuberDinner.Domain.MenuAggregate.ValueObjects;
 
 /// <summary>
 /// MenuItemId Value Object.
 /// </summary>
-public sealed class MenuItemId : ValueObject
+public sealed class MenuItemId : AbstractID<Guid, MenuItemId>, IConvertableID<Guid, string, MenuItemId>
 {
     private MenuItemId(Guid value)
+        : base(value)
     {
-        this.Value = value;
     }
 
     /// <summary>
-    /// Gets the Identifier.
+    /// Implicit conversion from string to MenuItem Id.
     /// </summary>
-    public Guid Value { get; private set; }
+    /// <param name="menuItemId">The string to convert.</param>
+    /// <returns>The converted MenuItem Id.</returns>
+    public static implicit operator MenuItemId(string menuItemId) => CreateFrom(menuItemId);
 
     /// <summary>
-    /// Creates a unique MenuItemId.
+    /// Creates a new unique MenuItem Id.
     /// </summary>
-    /// <returns>A new MenuItemId.</returns>
+    /// <returns>MenuItem Id.</returns>
     public static MenuItemId CreateUnique() => new(Guid.NewGuid());
 
-    /// <inheritdoc/>
-    public override IEnumerable<object> GetEqualityComponents()
-    {
-        yield return this.Value;
-    }
+    /// <summary>
+    /// Creates a new MenuItemId from a string.
+    /// </summary>
+    /// <param name="value">String value.</param>
+    /// <returns>A new MenuItem Id.</returns>
+    public static MenuItemId CreateFrom(string value) => new(Guid.Parse(value));
+
+    /// <summary>
+    /// Creates a new MenuItemId from a Guid.
+    /// </summary>
+    /// <param name="value">String value.</param>
+    /// <returns>A new MenuItem Id.</returns>
+    public static MenuItemId Create(Guid value) => new(value);
 }

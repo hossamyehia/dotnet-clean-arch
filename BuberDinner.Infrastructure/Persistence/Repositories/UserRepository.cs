@@ -5,7 +5,7 @@
 using BuberDinner.Application.Common.Interfaces.Persistence;
 using BuberDinner.Domain.UserAggregate;
 
-namespace BuberDinner.Infrastructure.Persistence;
+namespace BuberDinner.Infrastructure.Persistence.Repositories;
 
 /// <summary>
 /// In-memory user repository for demonstration purposes.

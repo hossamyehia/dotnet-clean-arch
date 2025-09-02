@@ -16,6 +16,12 @@ namespace BuberDinner.Domain.MenuReviewAggregate;
 /// </summary>
 public sealed class MenuReview : AggregateRoot<MenuReviewId>
 {
+    #pragma warning disable CS8618
+    private MenuReview()
+    {
+    }
+    #pragma warning restore CS8618
+
     private MenuReview(
         MenuReviewId menuReviewId,
         Rating rating,

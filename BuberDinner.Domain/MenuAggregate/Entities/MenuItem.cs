@@ -12,12 +12,17 @@ namespace BuberDinner.Domain.MenuAggregate.Entities;
 /// </summary>
 public sealed class MenuItem : Entity<MenuItemId>
 {
-    private MenuItem(MenuItemId id, string name, string description, decimal price)
+    #pragma warning disable CS8618
+    private MenuItem()
+    {
+    }
+    #pragma warning restore CS8618
+
+    private MenuItem(MenuItemId id, string name, string description)
         : base(id)
     {
         this.Name = name;
         this.Description = description;
-        this.Price = price;
     }
 
     /// <summary>
@@ -31,19 +36,13 @@ public sealed class MenuItem : Entity<MenuItemId>
     public string Description { get; private set; }
 
     /// <summary>
-    /// Gets the price of the menu item.
-    /// </summary>
-    public decimal Price { get; private set; }
-
-    /// <summary>
     /// Creates a new instance of the <see cref="MenuItem"/> class.
     /// </summary>
     /// <param name="name">The name of the menu item.</param>
     /// <param name="description">The description of the menu item.</param>
-    /// <param name="price">The price of the menu item.</param>
     /// <returns>A new instance of the <see cref="MenuItem"/> class.</returns>
-    public static MenuItem Create(string name, string description, decimal price = 0)
+    public static MenuItem Create(string name, string description)
     {
-        return new(MenuItemId.CreateUnique(), name, description, price);
+        return new(MenuItemId.CreateUnique(), name, description);
     }
 }

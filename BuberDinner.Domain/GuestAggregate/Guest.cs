@@ -25,6 +25,12 @@ public sealed class Guest : AggregateRoot<GuestId>
     private readonly List<MenuReviewId> _menuReviewIds = new();
     private readonly List<GuestRating> _ratings = new();
 
+    #pragma warning disable CS8618
+    private Guest()
+    {
+    }
+    #pragma warning restore CS8618
+
     private Guest(
         GuestId guestId,
         string firstName,
