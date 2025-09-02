@@ -64,3 +64,4 @@ E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinne
 E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
 E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Api\bin\Debug\net9.0\.xml

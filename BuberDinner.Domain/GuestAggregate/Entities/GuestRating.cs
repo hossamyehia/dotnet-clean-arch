@@ -12,13 +12,6 @@ namespace BuberDinner.Domain.GuestAggregate.Entities;
 /// <summary>
 /// Guest Rating Entity.
 /// </summary>
-/// <param name="GuestRatingId">Guest Rating Id.</param>
-/// <param name="HostId">Host Id.</param>
-/// <param name="DinnerId">Dinner Id.</param>
-/// <param name="Rating">Rating.</param>
-/// <param name="CreatedDateTime">Created Date Time.</param>
-/// <param name="UpdatedDateTime">Updated Date Time.</param>
-/// <returns>Guest Rating.</returns>
 public sealed class GuestRating : Entity<GuestRatingId>
 {
     private GuestRating(

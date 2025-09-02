@@ -3,7 +3,7 @@
 // </copyright>
 
 using BuberDinner.Domain.Common.Models;
-using BuberDinner.Domain.Menu.ValueObjects;
+using BuberDinner.Domain.MenuAggregate.ValueObjects;
 
 namespace BuberDinner.Domain.MenuAggregate.Entities;
 

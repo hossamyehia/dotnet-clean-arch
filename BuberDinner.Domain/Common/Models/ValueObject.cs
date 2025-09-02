@@ -14,11 +14,23 @@ namespace BuberDinner.Domain.Common.Models;
 /// </remarks>
 public abstract class ValueObject : IEquatable<ValueObject>
 {
+    /// <summary>
+    /// Determines whether two specified value objects have the same value.
+    /// </summary>
+    /// <param name="a">The first value object to compare.</param>
+    /// <param name="b">The second value object to compare.</param>
+    /// <returns>true if the value of <paramref name="a"/> is the same as the value of <paramref name="b"/>; otherwise, false.</returns>
     public static bool operator ==(ValueObject? a, ValueObject? b)
     {
         return Equals(a, b);
     }
 
+    /// <summary>
+    /// Determines whether two specified value objects have different values.
+    /// </summary>
+    /// <param name="a">The first value object to compare.</param>
+    /// <param name="b">The second value object to compare.</param>
+    /// <returns>true if the value of <paramref name="a"/> is different from the value of <paramref name="b"/>; otherwise, false.</returns>
     public static bool operator !=(ValueObject? a, ValueObject? b)
     {
         return !Equals(a, b);

@@ -4,6 +4,9 @@
 
 namespace BuberDinner.Api.Authentication;
 
+/// <summary>
+/// Register Request record.
+/// </summary>
 public record RegisterRequest
 {
     /// <summary>

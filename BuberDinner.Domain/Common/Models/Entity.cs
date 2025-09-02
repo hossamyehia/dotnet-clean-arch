@@ -8,7 +8,6 @@ namespace BuberDinner.Domain.Common.Models;
 /// Base class for all entities in the domain.
 /// </summary>
 /// <typeparam name="TId">The type of the entity's identifier.</typeparam>
-/// <seealso cref="IEquatable{Entity{TId}}"/>
 public abstract class Entity<TId> : IEquatable<Entity<TId>>
     where TId : notnull
 {

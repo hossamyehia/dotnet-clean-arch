@@ -9,7 +9,7 @@ namespace BuberDinner.Api.Controllers;
 /// <summary>
 /// Controller for handling dinner-related requests.
 /// </summary>
-[Route("api/[controller]")]
+[Route("dinners")]
 [ApiController]
 public class DinnersController : ApiController
 {

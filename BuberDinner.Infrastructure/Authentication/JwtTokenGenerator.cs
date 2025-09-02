@@ -8,7 +8,7 @@ using System.Text;
 
 using BuberDinner.Application.Common.Interfaces.Authentication;
 using BuberDinner.Application.Common.Services;
-using BuberDinner.Domain.User;
+using BuberDinner.Domain.UserAggregate;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 

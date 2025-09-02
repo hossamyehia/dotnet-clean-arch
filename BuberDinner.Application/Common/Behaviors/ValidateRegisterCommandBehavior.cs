@@ -16,7 +16,6 @@ namespace BuberDinner.Application.Common.Behaviors;
 /// <summary>
 /// Validate Register Command Behavior.
 /// </summary>
-/// <seealso cref="IPipelineBehavior{RegisterCommand, ErrorOr{AuthenticationResult}}"/>
 public class ValidateRegisterCommandBehavior : IPipelineBehavior<RegisterCommand, ErrorOr<AuthenticationResult>>
 {
     private readonly IValidator<RegisterCommand> _validator;

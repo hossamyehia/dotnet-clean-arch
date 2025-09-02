@@ -3,7 +3,7 @@
 // </copyright>
 
 using BuberDinner.Application.Common.Interfaces.Persistence;
-using BuberDinner.Domain.User;
+using BuberDinner.Domain.UserAggregate;
 
 namespace BuberDinner.Infrastructure.Persistence;
 
@@ -13,7 +13,7 @@ namespace BuberDinner.Infrastructure.Persistence;
 /// <remarks>Replace with a real database implementation in production.</remarks>
 public class UserRepository : IUserRepository
 {
-    private static readonly List<User> _users = new List<User>();
+    private static readonly List<User> _users = new();
 
     /// <inheritdoc/>
     public User? GetUserByEmail(string email)

@@ -16,3 +16,4 @@ E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinne
 E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Infrastructure\obj\Debug\net9.0\BuberDinner.Infrastructure.csproj.AssemblyReference.cache
 E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Infrastructure\obj\Debug\net9.0\BuberDin.DE1B2DD7.Up2Date
 E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Infrastructure\obj\Debug\net9.0\BuberDinner.Infrastructure.sourcelink.json
+E:\99. Others\Development\Web Development\.Net\New folder\BuberDinner\BuberDinner.Infrastructure\bin\Debug\net9.0\.xml

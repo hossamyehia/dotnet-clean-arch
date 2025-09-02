@@ -9,7 +9,8 @@ namespace BuberDinner.Domain.Common.Models;
 /// An aggregate root is an entity that serves as the entry point for a cluster of related objects.
 /// It ensures the integrity of the aggregate as a whole.
 /// </summary>
-/// <typeparam name="TId">The type of the identifier for the aggregate root.</typeparam
+/// <typeparam name="TId">The type of the identifier for the aggregate root.</typeparam>
+/// <seealso cref="Entity{TId}"/>
 public abstract class AggregateRoot<TId> : Entity<TId>
     where TId : notnull
 {

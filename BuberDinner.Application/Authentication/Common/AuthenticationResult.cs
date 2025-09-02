@@ -2,7 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-using BuberDinner.Domain.User;
+using BuberDinner.Domain.UserAggregate;
 
 namespace BuberDinner.Application.Authentication.Common;
 

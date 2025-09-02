@@ -5,6 +5,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
+    <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
     <!-- Common nullable and warnings configuration -->
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>

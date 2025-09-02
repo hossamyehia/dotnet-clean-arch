@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BuberDinner.Api</name>
+    </assembly>
+    <members>
+        <member name="T:BuberDinner.Api.Common.Errors.BuberDinnerProblemDetailsFactory">
+            <summary>
+            Provides a custom implementation of <see cref="T:Microsoft.AspNetCore.Mvc.Infrastructure.ProblemDetailsFactory"/> for BuberDinner API error handling.
+            </summary>
+        </member>
+        <member name="M:BuberDinner.Api.Common.Errors.BuberDinnerProblemDetailsFactory.#ctor(Microsoft.Extensions.Options.IOptions{Microsoft.AspNetCore.Mvc.ApiBehaviorOptions},Microsoft.Extensions.Options.IOptions{Microsoft.AspNetCore.Http.ProblemDetailsOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:BuberDinner.Api.Common.Errors.BuberDinnerProblemDetailsFactory"/> class.
+            </summary>
+            <param name="options">The options for the API behavior.</param>
+            <param name="problemDetailsOptions">The options for problem details.</param>
+        </member>
+        <member name="M:BuberDinner.Api.Common.Errors.BuberDinnerProblemDetailsFactory.CreateProblemDetails(Microsoft.AspNetCore.Http.HttpContext,System.Nullable{System.Int32},System.String,System.String,System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BuberDinner.Api.Common.Errors.BuberDinnerProblemDetailsFactory.CreateValidationProblemDetails(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary,System.Nullable{System.Int32},System.String,System.String,System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:BuberDinner.Api.Common.Http.HttpContextItemKeys">
+            <summary>
+            Keys for items stored in <see cref="P:Microsoft.AspNetCore.Http.HttpContext.Items"/>.
+            </summary>
+        </member>
+        <member name="F:BuberDinner.Api.Common.Http.HttpContextItemKeys.Errors">
+            <summary>
+            Key for storing errors in <see cref="P:Microsoft.AspNetCore.Http.HttpContext.Items"/>.
+            </summary>
+        </member>
+        <member name="T:BuberDinner.Api.Common.Mapping.AuthenticationMappingConfig">
+            <summary>
+            Mapping configuration for authentication-related types.
+            </summary>
+            <remarks>
+            This class implements the <see cref="T:Mapster.IRegister"/> interface to define the mapping configuration for authentication-related types.
+            </remarks>
+        </member>
+        <member name="M:BuberDinner.Api.Common.Mapping.AuthenticationMappingConfig.Register(Mapster.TypeAdapterConfig)">
+            <inheritdoc/>
+        </member>
+        <member name="T:BuberDinner.Api.Common.Mapping.DependencyInjection">
+            <summary>
+            Provides extension methods for registering mapping dependencies.
+            </summary>
+        </member>
+        <member name="M:BuberDinner.Api.Common.Mapping.DependencyInjection.AddMappings(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds mapping services to the specified <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+            <param name="services">The service collection to add services to.</param>
+            <returns>The updated <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</returns>
+        </member>
+        <member name="T:BuberDinner.Api.Controllers.ApiController">
+            <summary>
+            Base class for API controllers.
+            </summary>
+        </member>
+        <member name="M:BuberDinner.Api.Controllers.ApiController.Problem(System.Collections.Generic.List{ErrorOr.Error})">
+            <summary>
+            Returns a problem response with the specified errors.
+            </summary>
+            <param name="errors">The list of errors to include in the response.</param>
+            <returns>An IActionResult representing the problem response.</returns>
+        </member>
+        <member name="M:BuberDinner.Api.Controllers.ApiController.ValidationProblem(System.Collections.Generic.List{ErrorOr.Error})">
+            <summary>
+            Returns a validation problem response with the specified errors.
+            </summary>
+            <param name="errors">The list of errors to include in the response.</param>
+            <returns>An IActionResult representing the validation problem response.</returns>
+        </member>
+        <member name="T:BuberDinner.Api.Controllers.AuthenticationController">
+            <summary>
+            Controller for handling authentication-related requests.
+            </summary>
+        </member>
+        <member name="M:BuberDinner.Api.Controllers.AuthenticationController.#ctor(MediatR.ISender,MapsterMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BuberDinner.Api.Controllers.AuthenticationController"/> class.
+            </summary>
+            <param name="mediator">The mediator instance.</param>
+            <param name="mapper">The mapper instance.</param>
+        </member>
+        <member name="M:BuberDinner.Api.Controllers.AuthenticationController.Register(BuberDinner.Api.Authentication.RegisterRequest)">
+            <summary>
+            Handles the registration request.
+            </summary>
+            <param name="request">The registration request.</param>
+            <returns>An IActionResult representing the result of the registration request.</returns>
+        </member>
+        <member name="M:BuberDinner.Api.Controllers.AuthenticationController.Login(BuberDinner.Api.Authentication.LoginRequest)">
+            <summary>
+            Handles the login request.
+            </summary>
+            <param name="request">The login request.</param>
+            <returns>An IActionResult representing the result of the login request.</returns>
+        </member>
+        <member name="T:BuberDinner.Api.Controllers.DinnersController">
+            <summary>
+            Controller for handling dinner-related requests.
+            </summary>
+        </member>
+        <member name="M:BuberDinner.Api.Controllers.DinnersController.GetAllDinners">
+            <summary>
+            Returns a list of all dinners.
+            </summary>
+            <returns>An IActionResult representing the list of dinners.</returns>
+        </member>
+        <member name="T:BuberDinner.Api.Controllers.ErrorsController">
+            <summary>
+            Controller for handling errors.
+            </summary>
+        </member>
+        <member name="M:BuberDinner.Api.Controllers.ErrorsController.Error">
+            <summary>
+            Returns an error response with a status code and title.
+            </summary>
+            <returns>An IActionResult representing the error response.</returns>
+        </member>
+        <member name="T:BuberDinner.Api.DependencyInjection">
+            <summary>
+            Provides extension methods for dependency injection in the presentation layer.
+            </summary>
+        </member>
+        <member name="M:BuberDinner.Api.DependencyInjection.AddPresentation(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds presentation layer services to the specified <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+            <param name="services">The service collection to add services to.</param>
+            <returns>The updated <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</returns>
+        </member>
+    </members>
+</doc>
