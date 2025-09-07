@@ -2,8 +2,10 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+using BuberDinner.Domain.Common.Models;
 using BuberDinner.Domain.MenuAggregate;
 using BuberDinner.Infrastructure.Persistence.Configurations;
+using BuberDinner.Infrastructure.Persistence.Interceptors;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -15,13 +17,17 @@ namespace BuberDinner.Infrastructure.Persistence;
 /// </summary>
 public class BuberDinnerDbContext : DbContext
 {
+    private readonly PublishDomainEventsInterceptor _publishDomainEventsInterceptor;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="BuberDinnerDbContext"/> class.
     /// </summary>
     /// <param name="options">The options.</param>
-    public BuberDinnerDbContext(DbContextOptions<BuberDinnerDbContext> options)
+    /// <param name="publishDomainEventsInterceptor">The publish domain events interceptor.</param>
+    public BuberDinnerDbContext(DbContextOptions<BuberDinnerDbContext> options, PublishDomainEventsInterceptor publishDomainEventsInterceptor)
         : base(options)
     {
+        this._publishDomainEventsInterceptor = publishDomainEventsInterceptor;
     }
 
     /// <summary>
@@ -36,7 +42,9 @@ public class BuberDinnerDbContext : DbContext
     /// <param name="modelBuilder">The model builder.</param>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(MenuConfigurations).Assembly);
+        modelBuilder
+            .Ignore<List<IDomainEvent>>()
+            .ApplyConfigurationsFromAssembly(typeof(MenuConfigurations).Assembly);
         modelBuilder.Model.GetEntityTypes()
             .SelectMany(e => e.GetProperties())
             .Where(p => p.IsPrimaryKey())
@@ -44,4 +52,7 @@ public class BuberDinnerDbContext : DbContext
             .ForEach(pk => pk.ValueGenerated = ValueGenerated.Never);
         base.OnModelCreating(modelBuilder);
     }
+
+    /// <inheritdoc/>
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.AddInterceptors(this._publishDomainEventsInterceptor);
 }

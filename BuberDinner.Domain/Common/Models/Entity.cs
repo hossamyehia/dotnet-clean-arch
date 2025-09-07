@@ -8,17 +8,19 @@ namespace BuberDinner.Domain.Common.Models;
 /// Base class for all entities in the domain.
 /// </summary>
 /// <typeparam name="TId">The type of the entity's identifier.</typeparam>
-public abstract class Entity<TId> : IEquatable<Entity<TId>>
+public abstract class Entity<TId> : IEquatable<Entity<TId>>, IHasDomainEvents
     where TId : notnull
 {
-    #pragma warning disable CS8618
+    private readonly List<IDomainEvent> _domainEvents = new();
+
+#pragma warning disable CS8618
     /// <summary>
     /// Initializes a new instance of the <see cref="Entity{TId}"/> class.
     /// </summary>
     protected Entity()
     {
     }
-    #pragma warning restore CS8618
+#pragma warning restore CS8618
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Entity{TId}"/> class.
@@ -34,6 +36,12 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>>
     /// </summary>
     /// <value>The identifier of the entity.</value>
     public TId Id { get; protected set; }
+
+    /// <summary>
+    /// Gets the collection of domain events associated with the entity.
+    /// </summary>
+    /// <value>The collection of domain events associated with the entity.</value>
+    public IReadOnlyList<IDomainEvent> DomainEvents => this._domainEvents.AsReadOnly();
 
     /// <summary>
     /// Determines whether two specified entities have the same value.
@@ -73,5 +81,20 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>>
     public bool Equals(Entity<TId>? other)
     {
         return this.Equals((object?)other);
+    }
+
+    /// <summary>
+    /// Adds a domain event to the menu.
+    /// </summary>
+    /// <param name="domainEvent">The domain event to add.</param>
+    public void AddDomainEvent(IDomainEvent domainEvent)
+    {
+        this._domainEvents.Add(domainEvent);
+    }
+
+    /// <inheritdoc />
+    public void ClearDomainEvents()
+    {
+        this._domainEvents.Clear();
     }
 }
